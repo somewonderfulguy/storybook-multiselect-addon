@@ -1,6 +1,6 @@
 import { addons, types } from '@storybook/manager-api'
 import { ADDON_ID, TOOL_ID } from './constants'
-import { Tool } from './Tool'
+import Tool from './components/Tool'
 
 /**
  * Note: if you want to use JSX in this file, rename it to `manager.tsx`

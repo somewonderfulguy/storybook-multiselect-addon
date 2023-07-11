@@ -1,26 +1,33 @@
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useGlobals, useStorybookApi } from '@storybook/manager-api'
 import {
   Icons,
   IconButton,
-  Separator,
   WithTooltip,
   TooltipLinkList
 } from '@storybook/components'
 
-import { ADDON_ID, PARAM_KEY, TOOL_ID } from './constants'
+import { ADDON_ID, PARAM_KEY, TOOL_ID } from '../../constants'
 
-export const Tool = () => {
+import Switch from '../Switch'
+
+import {
+  StyledSeparator,
+  StyledTooltipLinkListWrapper,
+  StyledContainer
+} from './Tool.styles'
+
+const Tool = () => {
   const [globals, updateGlobals] = useGlobals()
   const api = useStorybookApi()
 
   const isActive = [true, 'true'].includes(globals[PARAM_KEY])
 
-  const toggleMyTool = useCallback(() => {
-    updateGlobals({
-      [PARAM_KEY]: !isActive
-    })
-  }, [isActive])
+  // const toggleMyTool = useCallback(() => {
+  //   updateGlobals({
+  //     [PARAM_KEY]: !isActive
+  //   })
+  // }, [isActive])
 
   useEffect(() => {
     api.setAddonShortcut(ADDON_ID, {
@@ -28,15 +35,28 @@ export const Tool = () => {
       defaultShortcut: ['O'],
       actionName: 'outline',
       showInMenu: false,
-      action: toggleMyTool
+      action: () => {}
     })
-  }, [toggleMyTool, api])
+  }, [api])
+
+  const [selectMultiple, setSelectMultiple] = useState(true)
 
   return (
     <WithTooltip
       tooltip={() => (
-        <>
-          <div>Toggle - Select multiple</div>
+        <StyledContainer>
+          <TooltipLinkList
+            links={[
+              {
+                id: 'reset',
+                title: 'Reset to default',
+                onClick: () => {
+                  console.log('reset')
+                }
+              }
+            ]}
+          />
+          <StyledSeparator />
           <TooltipLinkList
             links={[
               {
@@ -58,20 +78,24 @@ export const Tool = () => {
               }
             ]}
           />
-          {/* border-bottom: 4px solid rgba(255, 255, 255, 0.1); */}
-          <Separator />
-          <TooltipLinkList
-            links={[
-              {
-                id: 'reset',
-                title: 'Reset to default',
-                onClick: () => {
-                  console.log('reset')
+          <StyledSeparator />
+          <StyledTooltipLinkListWrapper>
+            <TooltipLinkList
+              links={[
+                {
+                  id: 'switch',
+                  title: (
+                    <Switch
+                      checked={selectMultiple}
+                      onChange={setSelectMultiple}
+                    >
+                      <span>Select multiple</span>
+                    </Switch>
+                  )
                 }
-              }
-            ]}
-          />
-          <Separator />
+              ]}
+            />
+          </StyledTooltipLinkListWrapper>
           <TooltipLinkList
             links={[
               {
@@ -105,7 +129,7 @@ export const Tool = () => {
               }
             ]}
           />
-        </>
+        </StyledContainer>
       )}
       trigger="click"
       closeOnOutsideClick
@@ -114,10 +138,12 @@ export const Tool = () => {
         key={TOOL_ID}
         active={isActive}
         title="Enable my addon"
-        onClick={toggleMyTool}
+        // onClick={toggleMyTool}
       >
         <Icons icon="lightning" />
       </IconButton>
     </WithTooltip>
   )
 }
+
+export default Tool
