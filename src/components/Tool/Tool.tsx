@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGlobals, useStorybookApi } from '@storybook/manager-api'
 import {
   Icons,
