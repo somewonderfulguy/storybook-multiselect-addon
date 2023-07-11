@@ -17,7 +17,7 @@ type Props = {
 
 const Switch = ({ checked, onChange, children }: Props) => (
   <StyledLabel aria-label="select multiple">
-    <StyledContainer>
+    <StyledContainer isActive={checked}>
       <StyledCheckboxInput
         type="checkbox"
         checked={checked}

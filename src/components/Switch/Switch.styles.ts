@@ -1,4 +1,4 @@
-import { styled } from '@storybook/theming'
+import { styled, Theme } from '@storybook/theming'
 
 // TODO: update config of the project so no need to use hardcoded classes
 // instead, it should be used this way: &:checked + ${StyledSlider} ${StyledRound} { ... }
@@ -14,7 +14,7 @@ const StyledLabel = styled.label`
 `
 StyledLabel.displayName = 'StyledLabel'
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div<{ theme?: Theme; isActive: boolean }>`
   position: relative;
   display: inline-block;
   width: 44px;
@@ -31,8 +31,8 @@ const StyledContainer = styled.div`
     bottom: 0;
 
     border-radius: 34px;
-    /* TODO: background color based on theme */
-    background-color: #636363;
+    background-color: ${({ theme, isActive }) =>
+      isActive ? theme!.color.positive : theme!.color.mediumdark};
     opacity: 0.6;
     transition: 200ms;
   }
@@ -43,7 +43,7 @@ const StyledContainer = styled.div`
 `
 StyledContainer.displayName = 'StyledContainer'
 
-const StyledRound = styled.div`
+const StyledRound = styled.div<{ theme?: Theme }>`
   z-index: 1;
   position: absolute;
   content: '';
@@ -54,28 +54,24 @@ const StyledRound = styled.div`
   transition: transform 400ms, opacity 200ms, background-color 200ms;
   border-radius: 50%;
 
-  /* TODO: background color based on theme */
-  background-color: white;
+  background-color: ${({ theme }) => theme!.color.lightest};
   background-repeat: no-repeat;
   background-position: center;
   background-size: 75%;
 `
 StyledRound.displayName = 'StyledRound'
 
-const StyledCheckboxInput = styled.input`
+const StyledCheckboxInput = styled.input<{ theme?: Theme }>`
   opacity: 0;
   width: 0;
   height: 0;
 
   &:checked + .${STYLED_SLIDER} .${STYLED_ROUND} {
-    /* TODO: background color based on theme */
-    background-color: #adadad;
     transform: translateX(80%);
   }
 
   &:focus + .${STYLED_SLIDER} .${STYLED_ROUND} {
-    /* TODO: background color based on theme */
-    box-shadow: 0px 0px 4px 1px rgb(33, 150, 243);
+    box-shadow: 0px 0px 4px 1px ${({ theme }) => theme.color.secondary};
   }
 `
 StyledCheckboxInput.displayName = 'StyledCheckboxInput'
