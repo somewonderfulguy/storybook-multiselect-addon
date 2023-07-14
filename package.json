@@ -6,39 +6,18 @@
     "storybook-addons",
     "storybook-addons"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/somewonderfulguy/storybook-multiselect-addon"
+  "storybook": {
+    "displayName": "Mutliselect",
+    "supportedFrameworks": [
+      "react"
+    ],
+    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
   "author": "Dmitriy Yastrebov <somewonderfulguy@gmail.com>",
   "license": "MIT",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
-    },
-    "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
-  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "prebuild": "yarn clean",
@@ -54,12 +33,12 @@
     "format": "prettier --list-different --write ."
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.26",
-    "@storybook/addon-interactions": "^7.0.26",
-    "@storybook/addon-links": "^7.0.26",
-    "@storybook/addon-mdx-gfm": "7.0.26",
-    "@storybook/react": "^7.0.26",
-    "@storybook/react-vite": "^7.0.26",
+    "@storybook/addon-essentials": "^7.0.27",
+    "@storybook/addon-interactions": "^7.0.27",
+    "@storybook/addon-links": "^7.0.27",
+    "@storybook/addon-mdx-gfm": "7.0.27",
+    "@storybook/react": "^7.0.27",
+    "@storybook/react-vite": "^7.0.27",
     "@storybook/testing-library": "^0.2.0",
     "@types/node": "^18.15.0",
     "@types/react": "^18.0.34",
@@ -74,7 +53,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rimraf": "^3.0.2",
-    "storybook": "^7.0.26",
+    "storybook": "^7.0.27",
     "tsup": "^6.6.3",
     "typescript": "^5.1.6",
     "vite": "^4.1.4",
@@ -99,15 +78,36 @@
       "optional": true
     }
   },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./manager": {
+      "require": "./dist/manager.js",
+      "import": "./dist/manager.mjs",
+      "types": "./dist/manager.d.ts"
+    },
+    "./preview": {
+      "require": "./dist/preview.js",
+      "import": "./dist/preview.mjs",
+      "types": "./dist/preview.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somewonderfulguy/storybook-multiselect-addon"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  },
-  "storybook": {
-    "displayName": "Mutliselect",
-    "supportedFrameworks": [
-      "react"
-    ],
-    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
 }

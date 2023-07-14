@@ -1,6 +1,6 @@
 import { addons, types } from '@storybook/manager-api'
 import { ADDON_ID, TOOL_ID } from './constants'
-import Tool from './components/Tool'
+import Addon from './Addon'
 
 /**
  * Note: if you want to use JSX in this file, rename it to `manager.tsx`
@@ -12,8 +12,9 @@ addons.register(ADDON_ID, () => {
   // Register the tool
   addons.add(TOOL_ID, {
     type: types.TOOL,
+    // TODO: upd
     title: 'My addon',
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
-    render: Tool
+    render: Addon
   })
 })

@@ -8,16 +8,9 @@ const StyledSeparator = styled.hr(({ theme }) => ({
 }))
 StyledSeparator.displayName = 'StyledSeparator'
 
-const StyledTooltipLinkListWrapper = styled.div`
-  & a {
-    padding: 0;
-  }
-`
-StyledTooltipLinkListWrapper.displayName = 'StyledTooltipLinkListWrapper'
-
 const StyledContainer = styled.div`
   padding: 5px 0;
 `
 StyledContainer.displayName = 'StyledContainer'
 
-export { StyledSeparator, StyledTooltipLinkListWrapper, StyledContainer }
+export { StyledSeparator, StyledContainer }
