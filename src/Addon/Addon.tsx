@@ -36,7 +36,8 @@ const svgSharedProps = {
 
 const Tool = () => {
   const multiToolbarConfig = useParameter(PARAM_KEY, INIT_STATE)
-  console.log(multiToolbarConfig)
+  // } = useParameter<ViewportAddonParameter>(PARAM_KEY, {});
+  // console.log(multiToolbarConfig)
   const [globals, updateGlobals] = useGlobals()
   const api = useStorybookApi()
 
