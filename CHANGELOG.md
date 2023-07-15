@@ -1,3 +1,17 @@
+# v0.0.5 (Sat Jul 15 2023)
+
+#### ⚠️ Pushed to `main`
+
+- upd (somewondewrfulguy@gmail.com)
+- Merge branch 'main' of https://github.com/somewonderfulguy/storybook-multiselect-addon (somewondewrfulguy@gmail.com)
+- plugin creation - wip (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.4 (Wed Jul 12 2023)
 
 #### ⚠️ Pushed to `main`
