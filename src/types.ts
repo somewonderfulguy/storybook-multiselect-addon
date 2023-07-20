@@ -1,48 +1,59 @@
 import { ReactNode } from 'react'
 import { IconsProps } from '@storybook/components'
 
-export type Addon<TOptionValue extends any> = {
-  [key: string]: AddonEntry<TOptionValue>
+/** The quantity of dropdowns will be as many as many keys in the object */
+export type Addon = {
+  [key: string]: AddonEntry
 }
 
-export type AddonEntry<TOptionValue> = {
+/** The object that will be used to render dropdowns */
+export type AddonEntry = {
+  /** Text that will be on the rigt of icon */
+  name?: string
+  /** Will be displayed as tooltip when hovering over addon button */
   description?: string
-  /** Icon of the dropdown, ReactNode for custom */
+  /** Icon of the dropdown, ReactNode for custom, if no icon provided - will fallback to question mark icon */
   icon?: ReactNode | IconsProps['icon']
-  entries: {
-    [key: string]:
-      | Reset
-      | SingleSelect<TOptionValue>
-      | MultiSelect<TOptionValue>
+  /** Elements, whether single select or multiple select, or reset button */
+  elements: {
+    [key: string]: Reset | SingleSelect | MultiSelect
   }
 }
 
+/** `reset` will reset all values to default based on `defaultValue`/`defaultValues` in select(s) */
 export type Reset = {
-  /** `reset` will reset all values to default */
+  /** `reset` will reset all values to default based on `defaultValue`/`defaultValues` in select(s) */
   type: 'reset'
 }
 
-export type SingleSelect<TOptionValue> = {
-  /** Type of the select, `userDefinedSelect` adds toggle checkbox that will switch from single to
-   * multiple but return value for `multiSelect` and `userDefinedSelect` will __always__ be an array */
+/** `singleSelect` will render a list of options, only one can be selected at a time */
+export type SingleSelect = {
   type: 'singleSelect'
   /** Array of options that will be in UI */
-  options: Option<TOptionValue>[]
+  options: Option[]
   /** Optional title that will be rendered above the list of options */
   title?: string
-  defaultValue?: TOptionValue
+  /** Optional default value that will be selected on first render */
+  defaultValue?: string
 }
 
-export type MultiSelect<TOptionValue> = {
+/** `multiSelect` / `userDefinedSelect` will render a list of options, multiple can be selected at a time */
+export type MultiSelect = {
+  /** `userDefinedSelect` adds toggle checkbox that will switch from single to multiple but the return
+   * value for `multiSelect` and `userDefinedSelect` will __always__ be an array */
   type: 'multiSelect' | 'userDefinedSelect'
-  options: Option<TOptionValue>[]
+  /** Array of options that will be in UI */
+  options: Option[]
+  /** Optional title that will be rendered above the list of options */
   title?: string
-  defaultValues?: TOptionValue[]
+  /** Optional default values that will be selected on first render */
+  defaultValues?: string[]
 }
 
-export type Option<TOptionValue extends any> = {
+/** List item of select (multi or single) */
+export type Option = {
   /** Value of the option */
-  value: TOptionValue
+  value: string
   /** Text of option that will be in UI */
   title: string
   /** Property for adding custom icon on the left, might be __overwritten__ if `icon` is not `undefined` */
