@@ -8,7 +8,12 @@ import {
   useAddonState,
   useGlobalTypes
 } from '@storybook/manager-api'
-import { IconButton, IconsProps, WithTooltip } from '@storybook/components'
+import {
+  IconButton,
+  Icons,
+  IconsProps,
+  WithTooltip
+} from '@storybook/components'
 import { STORY_RENDERED, STORY_CHANGED } from '@storybook/core-events'
 
 import { INIT_STATE, PARAM_KEY, TOOL_ID, ADDON_ID } from '../../constants'
@@ -134,7 +139,11 @@ const Dropdown = ({ icon }: { icon?: ReactNode | IconsProps['icon'] }) => {
       closeOnOutsideClick
     >
       <IconButton key={TOOL_ID} active={isActive} title="Configure themes">
-        {icon}
+        {typeof icon === 'string' ? (
+          <Icons icon={icon as IconsProps['icon']} />
+        ) : (
+          icon ?? <Icons icon="question" />
+        )}
       </IconButton>
     </WithTooltip>
   )
