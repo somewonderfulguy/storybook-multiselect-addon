@@ -1,3 +1,15 @@
+# v0.0.6 (Wed Jul 19 2023)
+
+#### ⚠️ Pushed to `main`
+
+- dev in progress, add ability to add multiple instances via preview globals and with custom icons (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.5 (Sat Jul 15 2023)
 
 #### ⚠️ Pushed to `main`
