@@ -1,3 +1,15 @@
+# v0.0.8 (Thu Jul 20 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add support for storbook icons (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.7 (Thu Jul 20 2023)
 
 #### ⚠️ Pushed to `main`
