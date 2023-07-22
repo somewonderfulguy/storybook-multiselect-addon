@@ -109,5 +109,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
   }
 }
