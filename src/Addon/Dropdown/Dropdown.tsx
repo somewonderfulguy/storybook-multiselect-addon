@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import {
   useGlobals,
   useParameter,
@@ -17,6 +17,7 @@ import {
 import { STORY_RENDERED, STORY_CHANGED } from '@storybook/core-events'
 
 import { INIT_STATE, PARAM_KEY, TOOL_ID, ADDON_ID } from '../../constants'
+import { AddonEntry, SingleSelect, MultiSelect } from '../../types'
 
 import OptionsSelect from './OptionsSelect'
 import Reset from './Reset'
@@ -43,7 +44,7 @@ const svgSharedProps = {
 // - add color picker
 // - add input field
 
-const Dropdown = ({ icon }: { icon?: ReactNode | IconsProps['icon'] }) => {
+const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
   const multiToolbarConfig = useParameter(PARAM_KEY, INIT_STATE)
   console.log('multiToolbarConfig', multiToolbarConfig)
   const [globals, updateGlobals] = useGlobals()
@@ -73,66 +74,32 @@ const Dropdown = ({ icon }: { icon?: ReactNode | IconsProps['icon'] }) => {
 
   const isActive = [true, 'true'].includes(globals[PARAM_KEY])
 
-  // TODO: no data msg
   return (
     <WithTooltip
       tooltip={() => (
         <StyledContainer>
-          <Reset />
-          <StyledSeparator />
-          <OptionsSelect
-            title="Orientation"
-            type="single"
-            defaultSelected={['horizontal']}
-            options={[
-              {
-                title: 'Horizontal',
-                value: 'horizontal',
-                left: (
-                  <svg {...svgSharedProps}>
-                    <path d="M14 1H3L2 2v11l1 1h11l1-1V2l-1-1zM8 13H3V2h5v11zm6 0H9V2h5v11z" />
-                  </svg>
-                ),
-                right: (
-                  <svg {...svgSharedProps}>
-                    <path d="M14 1H3L2 2v11l1 1h11l1-1V2l-1-1zM8 13H3V2h5v11zm6 0H9V2h5v11z" />
-                  </svg>
+          {elements.map((element, idx) => {
+            let returnElement: ReactNode = null
+            switch (element.type) {
+              case 'reset':
+                returnElement = <Reset />
+              case 'singleSelect':
+              case 'multiSelect':
+              case 'userDefinedSelect':
+                returnElement = (
+                  <OptionsSelect {...(element as SingleSelect | MultiSelect)} />
                 )
-              },
-              {
-                title: 'Vertical',
-                value: 'vertical',
-                left: (
-                  <svg {...svgSharedProps}>
-                    <path d="M14 1H3L2 2v11l1 1h11l1-1V2l-1-1zm0 12H3V8h11v5zm0-6H3V2h11v5z" />
-                  </svg>
+              default:
+                returnElement = null
+
+                return (
+                  <Fragment key={idx}>
+                    {returnElement}
+                    {idx < elements.length - 1 && <StyledSeparator />}
+                  </Fragment>
                 )
-              }
-            ]}
-          />
-          <StyledSeparator />
-          <OptionsSelect
-            title="Themes"
-            type="user-defined"
-            options={[
-              {
-                title: 'Yellow',
-                value: 'yellow',
-                left: '🌕'
-              },
-              {
-                title: 'Dark red',
-                value: 'darkRed',
-                left: '🔴'
-              },
-              {
-                title: 'Dark greenish',
-                value: 'darkGreenish',
-                left: '🟢'
-              }
-            ]}
-            defaultSelected={['yellow', 'darkRed']}
-          />
+            }
+          })}
         </StyledContainer>
       )}
       trigger="click"

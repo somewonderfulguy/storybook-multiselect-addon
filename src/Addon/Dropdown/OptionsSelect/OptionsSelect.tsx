@@ -1,5 +1,7 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
+
+import { SingleSelect, MultiSelect } from '../../../types'
 
 import Switch from './Switch'
 
@@ -9,32 +11,24 @@ import {
   StyledIconsWrapper
 } from './OptionsSelect.styles'
 
-// TODO: export type to build
-type Props = {
-  title?: ReactNode
-  type: 'single' | 'multiple' | 'user-defined'
-  options: Array<{
-    title: ReactNode
-    value: string
-    left?: ReactNode
-    right?: ReactNode
-    icon?: IconsProps['icon']
-  }>
-  defaultSelected?: string[]
-  allowEmpty?: boolean
-}
+type Props = SingleSelect | MultiSelect
 
 const OptionsSelect = ({
   title,
   type,
   options,
-  defaultSelected,
-  allowEmpty = false
+  allowEmpty = false,
+  ...rest
 }: Props) => {
-  const isSingle = type === 'single'
-  const isUserDefined = type === 'user-defined'
+  const isSingle = type === 'singleSelect'
+  const isUserDefined = type === 'userDefinedSelect'
 
-  // TODO: lift up state
+  // TODO: handle default values
+  const defaultSelected = isSingle
+    ? [(rest as SingleSelect).defaultValue]
+    : (rest as MultiSelect).defaultValues
+
+  // TODO: handle state
   const [selectedItems, setSelectedItems] = useState(
     defaultSelected ?? ([options[0]?.title] as string[]) ?? ['']
   )
@@ -76,7 +70,7 @@ const OptionsSelect = ({
           return {
             id: value,
             title: title,
-            left: icon ? <Icons icon={icon} /> : left,
+            left: icon ? <Icons icon={icon as IconsProps['icon']} /> : left,
             right: (
               <StyledIconsWrapper>
                 {right} {isActive && <Icons icon="check" />}

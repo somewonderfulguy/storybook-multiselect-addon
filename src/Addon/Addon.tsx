@@ -1,6 +1,6 @@
 import { useParameter } from '@storybook/manager-api'
 
-import { Addon } from '../types'
+import { Addon, AddonEntry } from '../types'
 import { PARAM_KEY } from '../constants'
 
 import Dropdown from './Dropdown'
@@ -16,7 +16,7 @@ const Addon = () => {
   return (
     <>
       {allMultiselects.map((id) => (
-        <Dropdown key={id} icon={multiToolbarConfig[id].icon} />
+        <Dropdown key={id} {...(multiToolbarConfig[id] as AddonEntry)} />
       ))}
     </>
   )

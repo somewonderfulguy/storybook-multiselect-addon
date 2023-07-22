@@ -15,9 +15,7 @@ export type AddonEntry = {
   /** Icon of the dropdown, ReactNode for custom, if no icon provided - will fallback to question mark icon */
   icon?: ReactNode | IconsProps['icon']
   /** Elements, whether single select or multiple select, or reset button */
-  elements: {
-    [key: string]: Reset | SingleSelect | MultiSelect
-  }
+  elements: Array<Reset | SingleSelect | MultiSelect>
 }
 
 /** `reset` will reset all values to default based on `defaultValue`/`defaultValues` in select(s) */
@@ -35,6 +33,8 @@ export type SingleSelect = {
   title?: string
   /** Optional default value that will be selected on first render */
   defaultValue?: string
+  /** Allow select nothing - will set value to `null` if none selected */
+  allowEmpty?: boolean
 }
 
 /** `multiSelect` / `userDefinedSelect` will render a list of options, multiple can be selected at a time */
@@ -48,6 +48,8 @@ export type MultiSelect = {
   title?: string
   /** Optional default values that will be selected on first render */
   defaultValues?: string[]
+  /** Allow select nothing - will set value to `[]` if none selected */
+  allowEmpty?: boolean
 }
 
 /** List item of select (multi or single) */
@@ -55,7 +57,7 @@ export type Option = {
   /** Value of the option */
   value: string
   /** Text of option that will be in UI */
-  title: string
+  title: ReactNode
   /** Property for adding custom icon on the left, might be __overwritten__ if `icon` is not `undefined` */
   left?: ReactNode
   /** Property for adding custom icon on the right */
