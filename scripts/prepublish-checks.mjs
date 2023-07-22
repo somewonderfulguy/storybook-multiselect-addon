@@ -4,7 +4,7 @@
 // const boxen = require('boxen')
 // const dedent = require('dedent')
 
-import packageJson from '../package.json'
+import packageJson from '../package.json' assert { type: 'json' }
 import boxen from 'boxen'
 import dedent from 'dedent'
 
