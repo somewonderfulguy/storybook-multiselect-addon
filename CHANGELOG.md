@@ -1,3 +1,25 @@
+# v0.0.10 (Sat Jul 22 2023)
+
+#### 🐛 Bug Fix
+
+- Undo commit [#1](https://github.com/somewonderfulguy/storybook-multiselect-addon/pull/1) (somewondewrfulguy@gmail.com)
+
+#### ⚠️ Pushed to `main`
+
+- upd yarn.lock (somewondewrfulguy@gmail.com)
+- trying to fix build (somewondewrfulguy@gmail.com)
+- remove comments (somewondewrfulguy@gmail.com)
+- add type assertion json for importing json file (somewondewrfulguy@gmail.com)
+- replace require to import in prepublish-checks.js (somewondewrfulguy@gmail.com)
+- rollback storybook (not working on build) (somewondewrfulguy@gmail.com)
+- upgrade storybook version, all props through params - wip (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov ([@somewonderfulguy](https://github.com/somewonderfulguy))
+
+---
+
 # v0.0.9 (Fri Jul 21 2023)
 
 #### ⚠️ Pushed to `main`
