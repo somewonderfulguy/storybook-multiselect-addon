@@ -63,5 +63,5 @@ export type Option = {
   /** Property for adding custom icon on the right */
   right?: ReactNode
   /** Icon of option that will be in UI (on the left side), __will override__ `left` property */
-  icon?: string
+  icon?: IconsProps['icon']
 }

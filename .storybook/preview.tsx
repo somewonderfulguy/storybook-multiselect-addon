@@ -34,11 +34,31 @@ const multiselect: Addon = {
         options: [
           {
             value: 'horizontal',
-            title: 'Horizontal'
+            title: 'Horizontal',
+            left: (
+              <svg
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 16 16"
+                {...svgSharedProps}
+              >
+                <path d="M14 1H3L2 2v11l1 1h11l1-1V2l-1-1zM8 13H3V2h5v11zm6 0H9V2h5v11z" />
+              </svg>
+            )
           },
           {
             value: 'vertical',
-            title: 'Vertical'
+            title: 'Vertical',
+            left: (
+              <svg
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 16 16"
+                {...svgSharedProps}
+              >
+                <path d="M14 1H3L2 2v11l1 1h11l1-1V2l-1-1zm0 12H3V8h11v5zm0-6H3V2h11v5z" />
+              </svg>
+            )
           }
         ]
       },
@@ -49,51 +69,83 @@ const multiselect: Addon = {
         options: [
           {
             value: 'yellow',
-            title: 'Yellow'
+            title: 'Yellow',
+            left: '🟡'
           },
           {
             value: 'darkRed',
-            title: 'Dark Red'
+            title: 'Dark Red',
+            left: '🔴'
           },
           {
             value: 'dark',
-            title: 'Dark'
+            title: 'Dark',
+            left: '⚫️'
           }
         ]
       }
     ]
   },
   language: {
-    icon: (
-      <svg
-        {...svgSharedProps}
-        fill="none"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M4 5h7" />
-        <path d="M7 4c0 4.846 0 7 .5 8" />
-        <path d="M10 8.5c0 2.286 -2 4.5 -3.5 4.5s-2.5 -1.135 -2.5 -2c0 -2 1 -3 3 -3s5 .57 5 2.857c0 1.524 -.667 2.571 -2 3.143" />
-        <path d="M12 20l4 -9l4 9" />
-        <path d="M19.1 18h-6.2" />
-      </svg>
-    ),
+    icon: 'globe',
     elements: [
       {
         type: 'singleSelect',
-        title: 'Orientation',
-        defaultValue: 'horizontal',
+        allowEmpty: true,
         options: [
           {
-            value: 'horizontal',
-            title: 'Horizontal'
+            value: 'en',
+            title: 'English',
+            left: '🇬🇧'
           },
           {
-            value: 'vertical',
-            title: 'Vertical'
+            value: 'ukr',
+            title: 'Ukrainian',
+            left: '🇺🇦'
+          },
+          {
+            value: 'pl',
+            title: 'Polish',
+            left: '🇵🇱'
+          },
+          {
+            value: 'jp',
+            title: 'Japanese',
+            left: '🇯🇵'
+          }
+        ]
+      },
+      {
+        title: 'Test multiselect',
+        type: 'multiSelect',
+        allowEmpty: true,
+        options: [
+          {
+            value: 'parzival',
+            title: 'Parzival',
+            icon: 'key',
+            right: '🗝️'
+          },
+          {
+            value: 'art3mis',
+            title: 'Art3mis'
+          },
+          {
+            value: 'aech',
+            title: 'Aech',
+            icon: 'wrench',
+            left: '🤖'
+          },
+          {
+            value: 'shoto',
+            title: 'Shoto',
+            left: '🐉',
+            right: '🐲'
+          },
+          {
+            value: 'daito',
+            title: 'Daito',
+            right: '👾'
           }
         ]
       },

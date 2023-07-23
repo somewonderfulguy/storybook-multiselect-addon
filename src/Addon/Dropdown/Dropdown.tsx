@@ -46,33 +46,34 @@ const svgSharedProps = {
 
 const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
   const multiToolbarConfig = useParameter(PARAM_KEY, INIT_STATE)
-  console.log('multiToolbarConfig', multiToolbarConfig)
-  const [globals, updateGlobals] = useGlobals()
-  console.log('globals', globals)
-  const globalTypes = useGlobalTypes()
-  console.log('globalTypes', globalTypes)
+  // console.log('multiToolbarConfig', multiToolbarConfig)
+  // const [globals, updateGlobals] = useGlobals()
+  // console.log('globals', globals)
+  // const globalTypes = useGlobalTypes()
+  // console.log('globalTypes', globalTypes)
 
-  const api = useStorybookApi()
+  // const api = useStorybookApi()
 
-  const state = useStorybookState()
-  console.log('state', state)
+  // const state = useStorybookState()
+  // console.log('state', state)
 
-  const [addonState, setAddonState] = useAddonState(ADDON_ID)
-  console.log('addonState', addonState)
+  // const [addonState, setAddonState] = useAddonState(ADDON_ID)
+  // console.log('addonState', addonState)
 
-  useChannel(
-    {
-      [STORY_CHANGED]: (args) => {
-        console.log('STORY_CHANGED', args)
-      },
-      [STORY_RENDERED]: (args) => {
-        console.log('STORY_RENDERED', args)
-      }
-    },
-    []
-  )
+  // useChannel(
+  //   {
+  //     [STORY_CHANGED]: (args) => {
+  //       console.log('STORY_CHANGED', args)
+  //     },
+  //     [STORY_RENDERED]: (args) => {
+  //       console.log('STORY_RENDERED', args)
+  //     }
+  //   },
+  //   []
+  // )
 
-  const isActive = [true, 'true'].includes(globals[PARAM_KEY])
+  // TODO: is active when any of the options is selected, also when dropdown is open
+  // const isActive = [true, 'true'].includes(globals[PARAM_KEY])
 
   return (
     <WithTooltip
@@ -83,34 +84,38 @@ const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
             switch (element.type) {
               case 'reset':
                 returnElement = <Reset />
+                break
               case 'singleSelect':
               case 'multiSelect':
               case 'userDefinedSelect':
                 returnElement = (
                   <OptionsSelect {...(element as SingleSelect | MultiSelect)} />
                 )
+                break
               default:
                 returnElement = null
-
-                return (
-                  <Fragment key={idx}>
-                    {returnElement}
-                    {idx < elements.length - 1 && <StyledSeparator />}
-                  </Fragment>
-                )
             }
+            return (
+              <Fragment key={idx}>
+                {returnElement}
+                {idx < elements.length - 1 && <StyledSeparator />}
+              </Fragment>
+            )
           })}
         </StyledContainer>
       )}
       trigger="click"
       closeOnOutsideClick
     >
-      <IconButton key={TOOL_ID} active={isActive} title="Configure themes">
+      {/* active={isActive} */}
+      <IconButton key={TOOL_ID} title={description}>
         {typeof icon === 'string' ? (
           <Icons icon={icon as IconsProps['icon']} />
         ) : (
           icon ?? <Icons icon="question" />
         )}
+        {/* TODO: fix styles */}
+        {name && <span>{name}</span>}
       </IconButton>
     </WithTooltip>
   )
