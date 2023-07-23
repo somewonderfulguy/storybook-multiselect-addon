@@ -1,3 +1,15 @@
+# v0.0.11 (Sun Jul 23 2023)
+
+#### ⚠️ Pushed to `main`
+
+- make ui render completely through params, upd params config for better testing (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.10 (Sat Jul 22 2023)
 
 #### 🐛 Bug Fix
