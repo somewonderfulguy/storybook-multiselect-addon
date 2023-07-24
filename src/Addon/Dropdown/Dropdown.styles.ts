@@ -1,5 +1,4 @@
 import { styled } from '@storybook/theming'
-import { IconButton } from '@storybook/components'
 
 const StyledSeparator = styled.hr(({ theme }) => ({
   border: 'none',
@@ -14,7 +13,7 @@ const StyledContainer = styled.div`
 `
 StyledContainer.displayName = 'StyledContainer'
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -23,6 +22,6 @@ const StyledIconButton = styled(IconButton)`
     margin-top: 1px;
   }
 `
-StyledIconButton.displayName = 'StyledIconButton'
+StyledIconButtonContainer.displayName = 'StyledIconButtonContainer'
 
-export { StyledSeparator, StyledContainer, StyledIconButton }
+export { StyledSeparator, StyledContainer, StyledIconButtonContainer }

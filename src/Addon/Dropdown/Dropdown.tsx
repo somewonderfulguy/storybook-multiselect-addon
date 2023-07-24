@@ -25,7 +25,7 @@ import Reset from './Reset'
 import {
   StyledSeparator,
   StyledContainer,
-  StyledIconButton
+  StyledIconButtonContainer
 } from './Dropdown.styles'
 
 // TODO: add linter
@@ -102,14 +102,16 @@ const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
       closeOnOutsideClick
     >
       {/* active={isActive} */}
-      <StyledIconButton key={TOOL_ID} title={description}>
-        {typeof icon === 'string' ? (
-          <Icons icon={icon as IconsProps['icon']} />
-        ) : (
-          icon ?? <Icons icon="question" />
-        )}
-        {name && <span>{name}</span>}
-      </StyledIconButton>
+      <IconButton key={TOOL_ID} title={description}>
+        <StyledIconButtonContainer>
+          {typeof icon === 'string' ? (
+            <Icons icon={icon as IconsProps['icon']} />
+          ) : (
+            icon ?? <Icons icon="question" />
+          )}
+          {name && <span>{name}</span>}
+        </StyledIconButtonContainer>
+      </IconButton>
     </WithTooltip>
   )
 }
