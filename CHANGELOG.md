@@ -1,3 +1,16 @@
+# v0.0.12 (Mon Jul 24 2023)
+
+#### ⚠️ Pushed to `main`
+
+- fix styles crush (somewondewrfulguy@gmail.com)
+- rollback require in prepublish, add queryKey, fix styling of text in button (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.11 (Sun Jul 23 2023)
 
 #### ⚠️ Pushed to `main`
