@@ -22,17 +22,11 @@ import { AddonEntry, SingleSelect, MultiSelect } from '../../types'
 import OptionsSelect from './OptionsSelect'
 import Reset from './Reset'
 
-import { StyledSeparator, StyledContainer } from './Dropdown.styles'
-
-const svgSharedProps = {
-  stroke: 'currentColor',
-  fill: 'currentColor',
-  strokeWidth: '0',
-  viewBox: '0 0 16 16',
-  height: '1em',
-  width: '1em',
-  xmlns: 'http://www.w3.org/2000/svg'
-}
+import {
+  StyledSeparator,
+  StyledContainer,
+  StyledIconButton
+} from './Dropdown.styles'
 
 // TODO: add linter
 // TODO: add tests
@@ -108,15 +102,14 @@ const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
       closeOnOutsideClick
     >
       {/* active={isActive} */}
-      <IconButton key={TOOL_ID} title={description}>
+      <StyledIconButton key={TOOL_ID} title={description}>
         {typeof icon === 'string' ? (
           <Icons icon={icon as IconsProps['icon']} />
         ) : (
           icon ?? <Icons icon="question" />
         )}
-        {/* TODO: fix styles */}
         {name && <span>{name}</span>}
-      </IconButton>
+      </StyledIconButton>
     </WithTooltip>
   )
 }

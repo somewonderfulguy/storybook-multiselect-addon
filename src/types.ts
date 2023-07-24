@@ -24,32 +24,33 @@ export type Reset = {
   type: 'reset'
 }
 
+export type SelectSharedProps = {
+  /** Optional title that will be rendered above the list of options */
+  title?: string
+  /** Allow select nothing - will set value to `null`/`[]` if none selected */
+  allowEmpty?: boolean
+  /** Query key to be used in url */
+  queryKey: string
+}
+
 /** `singleSelect` will render a list of options, only one can be selected at a time */
-export type SingleSelect = {
+export type SingleSelect = SelectSharedProps & {
   type: 'singleSelect'
   /** Array of options that will be in UI */
   options: Option[]
-  /** Optional title that will be rendered above the list of options */
-  title?: string
   /** Optional default value that will be selected on first render */
   defaultValue?: string
-  /** Allow select nothing - will set value to `null` if none selected */
-  allowEmpty?: boolean
 }
 
 /** `multiSelect` / `userDefinedSelect` will render a list of options, multiple can be selected at a time */
-export type MultiSelect = {
+export type MultiSelect = SelectSharedProps & {
   /** `userDefinedSelect` adds toggle checkbox that will switch from single to multiple but the return
    * value for `multiSelect` and `userDefinedSelect` will __always__ be an array */
   type: 'multiSelect' | 'userDefinedSelect'
   /** Array of options that will be in UI */
   options: Option[]
-  /** Optional title that will be rendered above the list of options */
-  title?: string
   /** Optional default values that will be selected on first render */
   defaultValues?: string[]
-  /** Allow select nothing - will set value to `[]` if none selected */
-  allowEmpty?: boolean
 }
 
 /** List item of select (multi or single) */

@@ -31,6 +31,7 @@ const multiselect: Addon = {
         type: 'singleSelect',
         title: 'Orientation',
         defaultValue: 'horizontal',
+        queryKey: 'orientation',
         options: [
           {
             value: 'horizontal',
@@ -66,6 +67,7 @@ const multiselect: Addon = {
         type: 'userDefinedSelect',
         title: 'Theme',
         defaultValues: ['yellow', 'darkRed'],
+        queryKey: 'theme',
         options: [
           {
             value: 'yellow',
@@ -92,6 +94,7 @@ const multiselect: Addon = {
       {
         type: 'singleSelect',
         allowEmpty: true,
+        queryKey: 'language',
         options: [
           {
             value: 'en',
@@ -119,6 +122,7 @@ const multiselect: Addon = {
         title: 'Test multiselect',
         type: 'multiSelect',
         allowEmpty: true,
+        queryKey: 'test',
         options: [
           {
             value: 'parzival',

@@ -1,8 +1,8 @@
 #!/usr/bin/env zx
 
-import packageJson from '../package.json' assert { type: 'json' }
-import boxen from 'boxen'
-import dedent from 'dedent'
+const packageJson = require('../package.json')
+const boxen = require('boxen')
+const dedent = require('dedent')
 
 const name = packageJson.name
 const displayName = packageJson.storybook.displayName

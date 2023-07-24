@@ -51,7 +51,6 @@ const OptionsSelect = ({
                     onChange={(checked) => {
                       setSelectMultiple(checked)
                       if (!checked) {
-                        // TODO: select first item (first in list not array)
                         setSelectedItems([selectedItems[0] ?? ''])
                       }
                     }}
