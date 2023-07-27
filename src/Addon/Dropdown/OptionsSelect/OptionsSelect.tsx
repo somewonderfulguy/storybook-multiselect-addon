@@ -78,6 +78,11 @@ const OptionsSelect = (props: Props) => {
 
   const [selectMultiple, setSelectMultiple] = useState(true)
 
+  if (!options.length) {
+    // TODO: test manually
+    return null
+  }
+
   return (
     <>
       {title && <StyledTitle>{title}</StyledTitle>}
