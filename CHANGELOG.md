@@ -1,3 +1,17 @@
+# v0.0.14 (Thu Jul 27 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/somewonderfulguy/storybook-multiselect-addon (somewondewrfulguy@gmail.com)
+- add error boundary, add check queryKey cannot be empty string (somewondewrfulguy@gmail.com)
+- extract hooks to separate files, add more validation that user passed values correctly (all uniques unique) (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.13 (Thu Jul 27 2023)
 
 #### ⚠️ Pushed to `main`
