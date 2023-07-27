@@ -1,20 +1,10 @@
 import { Fragment, ReactNode } from 'react'
 import {
-  useGlobals,
-  useParameter,
-  useStorybookApi,
-  useStorybookState,
-  useChannel,
-  useAddonState,
-  useGlobalTypes
-} from '@storybook/manager-api'
-import {
   IconButton,
   Icons,
   IconsProps,
   WithTooltip
 } from '@storybook/components'
-import { STORY_RENDERED, STORY_CHANGED } from '@storybook/core-events'
 
 import { INIT_STATE, PARAM_KEY, TOOL_ID, ADDON_ID } from '../../constants'
 import { AddonEntry, SingleSelect, MultiSelect } from '../../types'
@@ -33,39 +23,7 @@ import {
 // TODO: add readme
 // TODO: add storybook for addon itself, so user can see how it works
 
-// TODOs with no eta & no priority (just ideas):
-// - add slider
-// - add color picker
-// - add input field
-
 const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
-  const multiToolbarConfig = useParameter(PARAM_KEY, INIT_STATE)
-  // console.log('multiToolbarConfig', multiToolbarConfig)
-  // const [globals, updateGlobals] = useGlobals()
-  // console.log('globals', globals)
-  // const globalTypes = useGlobalTypes()
-  // console.log('globalTypes', globalTypes)
-
-  // const api = useStorybookApi()
-
-  // const state = useStorybookState()
-  // console.log('state', state)
-
-  // const [addonState, setAddonState] = useAddonState(ADDON_ID)
-  // console.log('addonState', addonState)
-
-  // useChannel(
-  //   {
-  //     [STORY_CHANGED]: (args) => {
-  //       console.log('STORY_CHANGED', args)
-  //     },
-  //     [STORY_RENDERED]: (args) => {
-  //       console.log('STORY_RENDERED', args)
-  //     }
-  //   },
-  //   []
-  // )
-
   // TODO: is active when any of the options is selected, also when dropdown is open
   // const isActive = [true, 'true'].includes(globals[PARAM_KEY])
 

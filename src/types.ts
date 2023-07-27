@@ -8,7 +8,7 @@ export type Addon = {
 
 /** The object that will be used to render dropdowns */
 export type AddonEntry = {
-  /** Text that will be on the rigt of icon */
+  /** Text that will be on the right of icon */
   name?: string
   /** Will be displayed as tooltip when hovering over addon button */
   description?: string
@@ -29,7 +29,7 @@ export type SelectSharedProps = {
   title?: string
   /** Allow select nothing - will set value to `null`/`[]` if none selected */
   allowEmpty?: boolean
-  /** Query key to be used in url */
+  /** Query key to be used in url, must be unique */
   queryKey: string
 }
 
@@ -38,7 +38,7 @@ export type SingleSelect = SelectSharedProps & {
   type: 'singleSelect'
   /** Array of options that will be in UI */
   options: Option[]
-  /** Optional default value that will be selected on first render */
+  /** Optional default value that will be selected on first render. Default value must match a `value` in `options` */
   defaultValue?: string
 }
 
@@ -47,7 +47,8 @@ export type MultiSelect = SelectSharedProps & {
   /** `userDefinedSelect` adds toggle checkbox that will switch from single to multiple but the return
    * value for `multiSelect` and `userDefinedSelect` will __always__ be an array */
   type: 'multiSelect' | 'userDefinedSelect'
-  /** Array of options that will be in UI */
+  /** Array of options that will be in UI, if `allowEmpty` is `false` or `undefined`, then first item will
+   * be selected anyway */
   options: Option[]
   /** Optional default values that will be selected on first render */
   defaultValues?: string[]
