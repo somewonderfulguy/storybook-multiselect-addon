@@ -7,13 +7,15 @@ export const useCheckUniqueValues = (
 ) => {
   useDidMountEffect(() => {
     // assert that all query keys are unique
-    // TODO: test manually
     const allQueryKeys = allSelects.map(({ queryKey }) => queryKey)
     const allUniqueQueryKeys = [...new Set(allQueryKeys)]
     if (allQueryKeys.length !== allUniqueQueryKeys.length) {
       throw new Error(
         `Query keys must be unique, but found duplicates: ${allQueryKeys}`
       )
+    }
+    if (allUniqueQueryKeys.some((_) => _ === '')) {
+      throw new Error(`Query keys must not be empty`)
     }
 
     // assert that all default values (in arrays, meaning multi selects) are unique

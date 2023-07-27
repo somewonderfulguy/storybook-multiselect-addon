@@ -1,5 +1,6 @@
 import { useParameter } from '@storybook/manager-api'
 import { useMemo } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 // TODO: configure aliases (?)
 import { Addon, AddonEntry, SingleSelect, MultiSelect } from '../types'
@@ -15,9 +16,15 @@ const Addon = () => {
     return null
   }
 
-  // TODO: add error boundary
-
-  return <AddonImplementation addonConfig={multiToolbarConfig} />
+  return (
+    <ErrorBoundary
+      // TODO: add error icon
+      fallbackRender={() => <></>}
+      onError={(error, info) => console.error(error, info)}
+    >
+      <AddonImplementation addonConfig={multiToolbarConfig} />
+    </ErrorBoundary>
+  )
 }
 
 const AddonImplementation = ({ addonConfig }: { addonConfig: Addon }) => {
