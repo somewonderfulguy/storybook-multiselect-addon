@@ -1,3 +1,15 @@
+# v0.0.13 (Thu Jul 27 2023)
+
+#### ⚠️ Pushed to `main`
+
+- implement state initialisation (based on defaultValue(s) & queryParams (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.12 (Mon Jul 24 2023)
 
 #### ⚠️ Pushed to `main`
