@@ -1,6 +1,7 @@
 import { useParameter } from '@storybook/manager-api'
 import { useMemo } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import { Icons } from '@storybook/components'
 
 // TODO: configure aliases (?)
 import { Addon, AddonEntry, SingleSelect, MultiSelect } from '../types'
@@ -18,8 +19,15 @@ const Addon = () => {
 
   return (
     <ErrorBoundary
-      // TODO: add error icon
-      fallbackRender={() => <></>}
+      fallbackRender={() => (
+        <div title="Multi select addon crushed. See console for more information">
+          <Icons
+            icon="alert"
+            color="red"
+            style={{ margin: '13px 7px 8px 11px', cursor: 'not-allowed' }}
+          />
+        </div>
+      )}
       onError={(error, info) => console.error(error, info)}
     >
       <AddonImplementation addonConfig={multiToolbarConfig} />

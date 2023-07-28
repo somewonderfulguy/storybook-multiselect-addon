@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect, useRef, useMemo } from 'react'
+import { useCallback, useState, useMemo } from 'react'
 import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
 import { useStorybookApi, useGlobals } from '@storybook/manager-api'
 import { FORCE_RE_RENDER } from '@storybook/core-events'
