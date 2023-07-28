@@ -1,3 +1,15 @@
+# v0.0.16 (Fri Jul 28 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add error icon for error boundary (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.14 (Thu Jul 27 2023)
 
 #### ⚠️ Pushed to `main`
