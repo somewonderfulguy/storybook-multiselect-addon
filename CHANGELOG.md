@@ -1,3 +1,15 @@
+# v0.0.17 (Sun Jul 30 2023)
+
+#### ⚠️ Pushed to `main`
+
+- fix checking default values logic, upd code style (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.16 (Fri Jul 28 2023)
 
 #### ⚠️ Pushed to `main`
