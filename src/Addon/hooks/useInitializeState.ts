@@ -2,20 +2,20 @@ import { useStorybookApi, useGlobals } from '@storybook/manager-api'
 import { addons } from '@storybook/preview-api'
 import { FORCE_RE_RENDER } from '@storybook/core-events'
 
-import { Addon, SingleSelect, MultiSelect } from '../../types'
+import { Addon } from '../../types'
 import { PARAM_KEY } from '../../constants'
 
+import { getAllMultiSelects } from '../Addon'
 import { useDidMountEffect } from './useDidMountEffect'
 
-export const useInitializeState = (
-  addonConfig: Addon,
-  allSelects: Array<SingleSelect | MultiSelect>
-) => {
+export const useInitializeState = (addonConfig: Addon) => {
   const { getQueryParam } = useStorybookApi()
   const [, updateGlobals] = useGlobals()
 
   useDidMountEffect(() => {
     type StateEntries = { [queryKey: string]: string | string[] }
+
+    const allSelects = getAllMultiSelects(addonConfig)
 
     const allDefaults: StateEntries = allSelects.reduce((acc, selectObject) => {
       const isSingle = selectObject.type === 'singleSelect'
@@ -100,5 +100,5 @@ export const useInitializeState = (
 
     updateGlobals({ [PARAM_KEY]: initState })
     addons.getChannel().emit(FORCE_RE_RENDER)
-  }, [addonConfig, getQueryParam, updateGlobals, allSelects])
+  }, [addonConfig, getQueryParam, updateGlobals])
 }

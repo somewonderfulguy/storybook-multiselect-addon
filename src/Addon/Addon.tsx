@@ -1,15 +1,31 @@
 import { useParameter } from '@storybook/manager-api'
-import { useMemo } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Icons } from '@storybook/components'
 
-// TODO: configure aliases (?)
 import { Addon, AddonEntry, SingleSelect, MultiSelect } from '../types'
 import { PARAM_KEY } from '../constants'
 
 import Dropdown from './Dropdown'
 import { useCheckUniqueValues } from './hooks/useCheckUniqueValues'
 import { useInitializeState } from './hooks/useInitializeState'
+
+// TODO: configure css modules
+// TODO: configure aliases
+// TODO: add linter
+// TODO: add storybook for addon itself, so user can see how it works
+// TODO: config more strict types
+// TODO: add readme
+// TODO: write tests
+
+export const getAllMultiSelects = (addonConfig: Addon) =>
+  Object.values(addonConfig)
+    .map(
+      ({ elements }) =>
+        elements.filter(({ type }) => type !== 'reset') as Array<
+          SingleSelect | MultiSelect
+        >
+    )
+    .reduce((acc, curr) => [...acc, ...curr], [])
 
 const Addon = () => {
   const multiToolbarConfig = useParameter<Addon>(PARAM_KEY, {})
@@ -36,24 +52,11 @@ const Addon = () => {
 }
 
 const AddonImplementation = ({ addonConfig }: { addonConfig: Addon }) => {
-  const allSelects = useMemo(
-    () =>
-      Object.values(addonConfig)
-        .map(
-          ({ elements }) =>
-            elements.filter(({ type }) => type !== 'reset') as Array<
-              SingleSelect | MultiSelect
-            >
-        )
-        .reduce((acc, curr) => [...acc, ...curr], []),
-    [addonConfig]
-  )
-
   // check that all options.value, defaultValues, queryKey are unique
-  useCheckUniqueValues(allSelects)
+  useCheckUniqueValues(addonConfig)
 
   // state initialization - set to globals considering query params, defaultValue(s) and allowEmpty
-  useInitializeState(addonConfig, allSelects)
+  useInitializeState(addonConfig)
 
   const allMultiSelects = Object.keys(addonConfig)
   return (

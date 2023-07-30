@@ -1,10 +1,16 @@
-import { SingleSelect, MultiSelect } from '../../types'
+import { useMemo } from 'react'
 
+import { Addon, MultiSelect } from '../../types'
+
+import { getAllMultiSelects } from '../Addon'
 import { useDidMountEffect } from './useDidMountEffect'
 
-export const useCheckUniqueValues = (
-  allSelects: Array<SingleSelect | MultiSelect>
-) => {
+export const useCheckUniqueValues = (addonConfig: Addon) => {
+  const allSelects = useMemo(
+    () => getAllMultiSelects(addonConfig),
+    [addonConfig]
+  )
+
   useDidMountEffect(() => {
     // assert that all query keys are unique
     const allQueryKeys = allSelects.map(({ queryKey }) => queryKey)
@@ -19,20 +25,26 @@ export const useCheckUniqueValues = (
     }
 
     // assert that all default values (in arrays, meaning multi selects) are unique
-    // TODO: test manually
-    allSelects.forEach(({ options, type }) => {
-      if (type === 'singleSelect') return
-      const allDefaultValues = options.map(({ value }) => value)
-      const allUniqueDefaultValues = [...new Set(allDefaultValues)]
-      if (allDefaultValues.length !== allUniqueDefaultValues.length) {
+    const allElements = Object.values(addonConfig).reduce<MultiSelect[]>(
+      (acc, { elements }) => [
+        ...acc,
+        ...(elements.filter(
+          ({ type }) => type === 'multiSelect' || type === 'userDefinedSelect'
+        ) as MultiSelect[])
+      ],
+      []
+    )
+    allElements.forEach(({ defaultValues }) => {
+      if (defaultValues === undefined) return
+      const uniqueDefaultValues = [...new Set(defaultValues)]
+      if (defaultValues.length !== uniqueDefaultValues.length) {
         throw new Error(
-          `Default values must be unique, but found duplicates: ${allDefaultValues}`
+          `Default values must be unique, but found duplicates: ${defaultValues}`
         )
       }
     })
 
     // assert that all values are unique
-    // TODO: test manually
     allSelects.forEach(({ options }) => {
       const allValues = options.map(({ value }) => value)
       const allUniqueValues = [...new Set(allValues)]
@@ -42,7 +54,5 @@ export const useCheckUniqueValues = (
         )
       }
     })
-
-    // TODO: check that default values are unique and values are unique
   }, [allSelects])
 }
