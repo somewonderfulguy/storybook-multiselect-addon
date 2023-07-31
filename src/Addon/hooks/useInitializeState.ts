@@ -26,16 +26,13 @@ export const useInitializeState = (addonConfig: Addon) => {
           allValues.includes(selectObject.defaultValue)
           ? selectObject.defaultValue
           : undefined
-        : (selectObject.defaultValues ?? [])?.filter((val) =>
-            allValues.includes(val)
-          )
+        : selectObject.defaultValues ?? []
 
       const isNoDefaults = isSingle
         ? defaultValue === undefined
         : defaultValue.length === 0
 
       // check that default value is in options (if not - throw error)
-      // TODO: test manually
       if (
         isSingle &&
         isNoDefaults &&
@@ -44,14 +41,17 @@ export const useInitializeState = (addonConfig: Addon) => {
         throw new Error(
           `Default value "${selectObject.defaultValue}" is not in options for "${selectObject.queryKey}"`
         )
-      } else if (!isSingle && defaultValue.length > defaultValue.length) {
-        throw new Error(
-          `Default values "${selectObject.defaultValues}" are not in options for "${selectObject.queryKey} (or some of them are missing)"`
-        )
+      } else if (!isSingle) {
+        ;(defaultValue as string[]).forEach((val) => {
+          if (!allValues.includes(val)) {
+            throw new Error(
+              `Default value "${val}" is not in options for "${selectObject.queryKey}" (or some of them are missing)`
+            )
+          }
+        })
       }
 
       // if no defaults && empty not allowed && use first option (if no options - it won't be rendered at all)
-      // TODO: test manually
       let value: string | string[] = defaultValue
       if (isNoDefaults && !selectObject.allowEmpty) {
         value = isSingle ? allValues[0] : [allValues[0]]
