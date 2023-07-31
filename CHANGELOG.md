@@ -1,3 +1,16 @@
+# v0.0.18 (Mon Jul 31 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/somewonderfulguy/storybook-multiselect-addon (somewondewrfulguy@gmail.com)
+- fix default values check for multiselects (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.17 (Sun Jul 30 2023)
 
 #### ⚠️ Pushed to `main`
