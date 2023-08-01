@@ -1,13 +1,21 @@
-import { Fragment, ReactNode } from 'react'
+import { Fragment, ReactNode, useState } from 'react'
 import {
   IconButton,
   Icons,
   IconsProps,
   WithTooltip
 } from '@storybook/components'
+import { useGlobals, useStorybookApi } from '@storybook/manager-api'
+import isEqual from 'lodash/isEqual'
+import { GLOBALS_UPDATED } from '@storybook/core-events'
 
-import { TOOL_ID } from '../../constants'
-import { AddonEntry, SingleSelect, MultiSelect } from '../../types'
+import {
+  AddonEntry,
+  SingleSelect,
+  MultiSelect,
+  GenericValue
+} from '../../types'
+import { PARAM_KEY } from '../../constants'
 
 import OptionsSelect from './OptionsSelect'
 import Reset from './Reset'
@@ -18,9 +26,50 @@ import {
   StyledIconButtonContainer
 } from './Dropdown.styles'
 
-const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
-  // TODO: is active when any of the options is selected, also when dropdown is open
-  // const isActive = [true, 'true'].includes(globals[PARAM_KEY])
+type Props = AddonEntry & {
+  allDefaults: GenericValue
+}
+
+const Dropdown = ({
+  elements,
+  icon,
+  description,
+  name,
+  allDefaults
+}: Props) => {
+  // `initialized` is for avoiding incorrect `isActive` when component initializes what leads to blinking effect
+  const [initialized, setInitialized] = useState(false)
+  useStorybookApi()
+    .getChannel()
+    .on(GLOBALS_UPDATED, () => setInitialized(true))
+
+  const queryKeys = (
+    elements.filter((_) => _.type !== 'reset') as SingleSelect[] | MultiSelect[]
+  ).map(({ queryKey }) => queryKey)
+
+  const defaults = Object.entries(allDefaults).reduce<GenericValue>(
+    (acc, [key, value]) => {
+      if (queryKeys.includes(key)) {
+        acc[key] = Array.isArray(value) ? value.sort() : value
+      }
+      return acc
+    },
+    {}
+  )
+
+  const [globals] = useGlobals()
+  const currentValues = Object.entries(globals[PARAM_KEY]).reduce<GenericValue>(
+    (acc, [key, _]) => {
+      const value = _ as string | string[] | undefined
+      if (queryKeys.includes(key)) {
+        acc[key] = Array.isArray(value) ? value.sort() : value
+      }
+      return acc
+    },
+    {}
+  )
+
+  const isActive = initialized && !isEqual(defaults, currentValues)
 
   return (
     <WithTooltip
@@ -54,9 +103,7 @@ const Dropdown = ({ elements, icon, description, name }: AddonEntry) => {
       trigger="click"
       closeOnOutsideClick
     >
-      {/* active={isActive} */}
-      {/* fix key (add unique value) */}
-      <IconButton key={TOOL_ID} title={description}>
+      <IconButton title={description} active={isActive}>
         <StyledIconButtonContainer>
           {typeof icon === 'string' ? (
             <Icons icon={icon as IconsProps['icon']} />

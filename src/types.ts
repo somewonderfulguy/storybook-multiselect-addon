@@ -67,3 +67,6 @@ export type Option = {
   /** Icon of option that will be in UI (on the left side), __will override__ `left` property */
   icon?: IconsProps['icon']
 }
+
+/** Value inside object of multi or single select, either string or array of string, or `undefined` */
+export type GenericValue = { [key: string]: string | string[] | undefined }

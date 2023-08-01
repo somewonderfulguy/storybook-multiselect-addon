@@ -1,8 +1,6 @@
-import { useCallback, useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
-import { useStorybookApi, useGlobals } from '@storybook/manager-api'
-import { FORCE_RE_RENDER } from '@storybook/core-events'
-import { addons } from '@storybook/preview-api'
+import { useGlobals } from '@storybook/manager-api'
 
 import { SingleSelect, MultiSelect } from '../../../types'
 import { PARAM_KEY } from '../../../constants'
@@ -19,62 +17,22 @@ type Props = SingleSelect | MultiSelect
 
 const OptionsSelect = (props: Props) => {
   const { title, type, options, allowEmpty = false, queryKey } = props
-  const defaultValue = (props as SingleSelect).defaultValue
-  const defaultValues = (props as MultiSelect).defaultValues
 
   const isSingle = type === 'singleSelect'
   const isUserDefined = type === 'userDefinedSelect'
   const allValues = useMemo(() => options.map(({ value }) => value), [options])
 
-  const { getQueryParam, setQueryParams } = useStorybookApi()
-
   const [globals, updateGlobals] = useGlobals()
-  const refreshAndUpdateGlobal = useCallback(
-    (newState: string[]) => {
-      // console.log(queryKey, newState, `globals[${PARAM_KEY}]`, {
-      //   ...globals[PARAM_KEY],
-      //   [queryKey]: newState
-      // })
-      updateGlobals({
-        [PARAM_KEY]: {
-          ...globals[PARAM_KEY],
-          [queryKey]: newState
-        }
-      })
-      addons.getChannel().emit(FORCE_RE_RENDER)
-    },
-    [updateGlobals, globals, queryKey]
-  )
-
-  // console.log('globals', globals)
-
-  const updateState = (newState: string[]) => {
-    refreshAndUpdateGlobal(newState)
-    // updateGlobals
-    // setQueryParams
+  const value: string | string[] = globals[PARAM_KEY][queryKey]
+  const selectedItems = (typeof value === 'string' ? [value] : value) ?? []
+  const setSelectedItems = (newState?: string[]) => {
+    updateGlobals({
+      [PARAM_KEY]: {
+        ...globals[PARAM_KEY],
+        [queryKey]: isSingle && newState[0] ? newState[0] : newState
+      }
+    })
   }
-
-  const defaultSelected = isSingle
-    ? defaultValue
-      ? [defaultValue]
-      : []
-    : defaultValues
-
-  // TODO: use globals
-  const [selectedItems, setSelectedItems] = useState(() => {
-    const queryParamValue = getQueryParam(queryKey)
-
-    const state =
-      defaultSelected?.length > 0
-        ? defaultSelected
-        : allowEmpty
-        ? []
-        : options[0]?.value
-        ? [options[0]?.value]
-        : []
-
-    return state
-  })
 
   const [selectMultiple, setSelectMultiple] = useState(true)
 
@@ -99,7 +57,6 @@ const OptionsSelect = (props: Props) => {
                       setSelectMultiple(checked)
                       if (!checked) {
                         setSelectedItems([selectedItems[0] ?? ''])
-                        updateState([selectedItems[0] ?? ''])
                       }
                     }}
                   >
@@ -125,19 +82,17 @@ const OptionsSelect = (props: Props) => {
             ),
             active: isActive,
             onClick: () => {
+              // FIXME: single select allowEmpty - try to make empty - error happens
               if (isSingle || (isUserDefined && !selectMultiple)) {
                 if (isActive && allowEmpty) {
-                  updateState([''])
-                  return setSelectedItems([''])
+                  return setSelectedItems(undefined)
                 }
-                updateState([value])
                 setSelectedItems([value])
               } else {
                 if (isActive) {
                   if (!allowEmpty && selectedItems.length === 1) {
                     return
                   }
-                  updateState(selectedItems.filter((item) => item !== value))
                   setSelectedItems(
                     selectedItems.filter((item) => item !== value)
                   )
@@ -147,9 +102,6 @@ const OptionsSelect = (props: Props) => {
                   // this needed when user disables `select multiple` and only the most top item should
                   // remain selected
                   setSelectedItems(
-                    allValues.filter((item) => newSelectedItems.includes(item))
-                  )
-                  updateState(
                     allValues.filter((item) => newSelectedItems.includes(item))
                   )
                 }

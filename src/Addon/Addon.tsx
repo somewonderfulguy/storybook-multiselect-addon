@@ -9,7 +9,7 @@ import Dropdown from './Dropdown'
 import { useCheckUniqueValues } from './hooks/useCheckUniqueValues'
 import { useInitializeState } from './hooks/useInitializeState'
 
-// TODO: configure css modules
+// TODO: configure css modules (is it an issue of tsup? change to vite/webpack/rollup?)
 // TODO: configure aliases
 // TODO: add linter
 // TODO: add storybook for addon itself, so user can see how it works
@@ -40,6 +40,7 @@ const Addon = () => {
           <Icons
             icon="alert"
             color="red"
+            // TODO: move styles outside
             style={{ margin: '13px 7px 8px 11px', cursor: 'not-allowed' }}
           />
         </div>
@@ -56,13 +57,17 @@ const AddonImplementation = ({ addonConfig }: { addonConfig: Addon }) => {
   useCheckUniqueValues(addonConfig)
 
   // state initialization - set to globals considering query params, defaultValue(s) and allowEmpty
-  useInitializeState(addonConfig)
+  const allDefaults = useInitializeState(addonConfig)
 
-  const allMultiSelects = Object.keys(addonConfig)
+  const allDropdowns = Object.keys(addonConfig)
   return (
     <>
-      {allMultiSelects.map((id) => (
-        <Dropdown key={id} {...(addonConfig[id] as AddonEntry)} />
+      {allDropdowns.map((id) => (
+        <Dropdown
+          key={id}
+          {...(addonConfig[id] as AddonEntry)}
+          allDefaults={allDefaults}
+        />
       ))}
     </>
   )

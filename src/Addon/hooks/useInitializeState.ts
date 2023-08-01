@@ -1,23 +1,21 @@
-import { useStorybookApi, useGlobals } from '@storybook/manager-api'
-import { addons } from '@storybook/preview-api'
-import { FORCE_RE_RENDER } from '@storybook/core-events'
+import { useState } from 'react'
+import { useGlobals } from '@storybook/manager-api'
 
-import { Addon } from '../../types'
+import { Addon, GenericValue } from '../../types'
 import { PARAM_KEY } from '../../constants'
 
 import { getAllMultiSelects } from '../Addon'
 import { useDidMountEffect } from './useDidMountEffect'
 
 export const useInitializeState = (addonConfig: Addon) => {
-  const { getQueryParam } = useStorybookApi()
-  const [, updateGlobals] = useGlobals()
+  const usingGlobals = useGlobals()
+
+  const [allDefaults, setAllDefaults] = useState<GenericValue>({})
 
   useDidMountEffect(() => {
-    type StateEntries = { [queryKey: string]: string | string[] }
-
     const allSelects = getAllMultiSelects(addonConfig)
 
-    const allDefaults: StateEntries = allSelects.reduce((acc, selectObject) => {
+    const allDefaults: GenericValue = allSelects.reduce((acc, selectObject) => {
       const isSingle = selectObject.type === 'singleSelect'
       const allValues = selectObject.options.map(({ value }) => value)
 
@@ -63,20 +61,30 @@ export const useInitializeState = (addonConfig: Addon) => {
         [selectObject.queryKey]: value
       }
     }, {})
+    setAllDefaults(allDefaults)
 
-    const allQueryParams: StateEntries = allSelects.reduce(
+    const [globals, updateGlobals] = usingGlobals
+
+    const defaultGlobalsFromQueryParams: {
+      [queryKey: string]: string | string[]
+    } = globals[PARAM_KEY]
+
+    const allQueryParams: GenericValue = allSelects.reduce(
       (acc, selectObject) => {
         const isSingle = selectObject.type === 'singleSelect'
         const allValues = selectObject.options.map(({ value }) => value)
 
-        const queryParamValue = getQueryParam(selectObject.queryKey)
+        const queryParamValue =
+          defaultGlobalsFromQueryParams[selectObject.queryKey]
 
         // extract query param value and filter it by available options
         const value = isSingle
-          ? allValues.includes(queryParamValue)
+          ? allValues.includes(queryParamValue as string)
             ? queryParamValue
             : undefined
-          : queryParamValue?.split(',').filter((val) => allValues.includes(val))
+          : (queryParamValue as string[])?.filter((val) =>
+              allValues.includes(val)
+            )
 
         // skip if no value
         if (value === undefined) return acc
@@ -90,7 +98,7 @@ export const useInitializeState = (addonConfig: Addon) => {
       {}
     )
 
-    const initState: { [paramKey: string]: StateEntries } = {
+    const initState: { [paramKey: string]: GenericValue } = {
       [PARAM_KEY]: {
         // query params have priority over default values
         ...allDefaults,
@@ -98,7 +106,8 @@ export const useInitializeState = (addonConfig: Addon) => {
       }
     }
 
-    updateGlobals({ [PARAM_KEY]: initState })
-    addons.getChannel().emit(FORCE_RE_RENDER)
-  }, [addonConfig, getQueryParam, updateGlobals])
+    updateGlobals(initState)
+  }, [addonConfig, usingGlobals])
+
+  return allDefaults
 }
