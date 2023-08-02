@@ -2,7 +2,7 @@ import React from 'react'
 import type { Preview } from '@storybook/react'
 
 import { PARAM_KEY } from '../src/constants'
-import { Addon } from '../src/types'
+import { AddonConfig } from '../src/types'
 
 const svgSharedProps = {
   stroke: 'currentColor',
@@ -11,7 +11,7 @@ const svgSharedProps = {
   xmlns: 'http://www.w3.org/2000/svg'
 }
 
-const multiselect: Addon = {
+const multiselect: AddonConfig = {
   theme: {
     name: 'Theme',
     description: 'Select theme',

@@ -37,7 +37,8 @@ const Dropdown = ({
   name,
   allDefaults
 }: Props) => {
-  // `initialized` is for avoiding incorrect `isActive` when component initializes what leads to blinking effect
+  // `initialized` is for avoiding incorrect `isActive` when component initializes
+  // what leads to blinking effect (inactive -> active -> inactive)
   const [initialized, setInitialized] = useState(false)
   useStorybookApi()
     .getChannel()
@@ -61,7 +62,7 @@ const Dropdown = ({
   const currentValues = Object.entries(globals[PARAM_KEY]).reduce<GenericValue>(
     (acc, [key, _]) => {
       const value = _ as string | string[] | undefined
-      if (queryKeys.includes(key)) {
+      if (queryKeys.includes(key) && value !== undefined) {
         acc[key] = Array.isArray(value) ? value.sort() : value
       }
       return acc

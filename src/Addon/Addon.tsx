@@ -2,7 +2,13 @@ import { useParameter } from '@storybook/manager-api'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Icons } from '@storybook/components'
 
-import { Addon, AddonEntry, SingleSelect, MultiSelect } from '../types'
+import {
+  AddonConfig,
+  Addon,
+  AddonEntry,
+  SingleSelect,
+  MultiSelect
+} from '../types'
 import { PARAM_KEY } from '../constants'
 
 import Dropdown from './Dropdown'
@@ -16,7 +22,10 @@ import { useInitializeState } from './hooks/useInitializeState'
 // TODO: config more strict types
 // TODO: add readme
 // TODO: write tests
+// TODO: fix watch mode (perhaps, tsup issue)
+// TODO: metadata for addon, see: https://storybook.js.org/docs/react/addons/integration-catalog
 
+// where is it used? colocate
 export const getAllMultiSelects = (addonConfig: Addon) =>
   Object.values(addonConfig)
     .map(
@@ -28,10 +37,20 @@ export const getAllMultiSelects = (addonConfig: Addon) =>
     .reduce((acc, curr) => [...acc, ...curr], [])
 
 const Addon = () => {
-  const multiToolbarConfig = useParameter<Addon>(PARAM_KEY, {})
+  const multiToolbarConfig = useParameter<AddonConfig>(PARAM_KEY, {})
   if (!Object.keys(multiToolbarConfig).length) {
     return null
   }
+
+  const configWithoutDisable = Object.keys(multiToolbarConfig).reduce<Addon>(
+    (acc, curr) => {
+      if (curr !== 'disable') {
+        acc[curr] = (multiToolbarConfig as Addon)[curr]
+      }
+      return acc
+    },
+    {}
+  )
 
   return (
     <ErrorBoundary
@@ -47,7 +66,9 @@ const Addon = () => {
       )}
       onError={(error, info) => console.error(error, info)}
     >
-      <AddonImplementation addonConfig={multiToolbarConfig} />
+      {multiToolbarConfig?.disable ? null : (
+        <AddonImplementation addonConfig={configWithoutDisable} />
+      )}
     </ErrorBoundary>
   )
 }

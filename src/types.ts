@@ -1,10 +1,15 @@
 import { ReactNode } from 'react'
 import { IconsProps } from '@storybook/components'
 
-/** The quantity of dropdowns will be as many as many keys in the object */
-export type Addon = {
-  [key: string]: AddonEntry
+export type AddonConfig = AddonDisabled | Addon
+
+export type AddonDisabled = {
+  /** If `true` then addon will not be rendered */
+  disable: boolean
 }
+
+/** The quantity of dropdowns will be as many as many keys in the object, except `disable` prop */
+export type Addon = { [key: string]: AddonEntry }
 
 /** The object that will be used to render dropdowns */
 export type AddonEntry = {

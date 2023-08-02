@@ -29,17 +29,14 @@ const OptionsSelect = (props: Props) => {
     updateGlobals({
       [PARAM_KEY]: {
         ...globals[PARAM_KEY],
-        [queryKey]: isSingle && newState[0] ? newState[0] : newState
+        [queryKey]: isSingle && newState?.[0] ? newState[0] : newState
       }
     })
   }
 
   const [selectMultiple, setSelectMultiple] = useState(true)
 
-  if (!options.length) {
-    // TODO: test manually
-    return null
-  }
+  if (!options.length) return null
 
   return (
     <>
