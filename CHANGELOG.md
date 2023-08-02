@@ -1,3 +1,16 @@
+# v0.0.20 (Wed Aug 02 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/somewonderfulguy/storybook-multiselect-addon (somewondewrfulguy@gmail.com)
+- implement disabling addon via parameters (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.19 (Tue Aug 01 2023)
 
 #### ⚠️ Pushed to `main`
