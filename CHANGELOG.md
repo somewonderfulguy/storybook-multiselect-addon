@@ -1,3 +1,15 @@
+# v0.0.21 (Fri Aug 04 2023)
+
+#### ⚠️ Pushed to `main`
+
+- implement reset functionality (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.20 (Wed Aug 02 2023)
 
 #### ⚠️ Pushed to `main`
