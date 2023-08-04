@@ -80,7 +80,14 @@ const Dropdown = ({
             let returnElement: ReactNode = null
             switch (element.type) {
               case 'reset':
-                returnElement = <Reset />
+                returnElement = (
+                  <Reset
+                    defaults={defaults}
+                    allKeys={(elements as SingleSelect[])
+                      .map(({ queryKey }) => queryKey)
+                      .filter((_) => _)}
+                  />
+                )
                 break
               case 'singleSelect':
               case 'multiSelect':

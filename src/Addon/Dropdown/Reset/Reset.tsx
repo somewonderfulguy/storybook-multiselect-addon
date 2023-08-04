@@ -1,6 +1,19 @@
 import { Icons, TooltipLinkList } from '@storybook/components'
+import { useGlobals } from '@storybook/manager-api'
 
-const Reset = () => {
+import { GenericValue } from '../../../types'
+import { PARAM_KEY } from '../../../constants'
+
+type Props = { defaults: GenericValue; allKeys: string[] }
+
+const Reset = ({ defaults, allKeys }: Props) => {
+  const [globals, updateGlobals] = useGlobals()
+
+  const resetValues = allKeys.reduce<GenericValue>((acc, curr) => {
+    acc[curr] = defaults[curr]
+    return acc
+  }, {})
+
   return (
     <TooltipLinkList
       links={[
@@ -9,7 +22,12 @@ const Reset = () => {
           title: 'Reset to default',
           left: <Icons icon="undo" />,
           onClick: () => {
-            console.log('reset')
+            updateGlobals({
+              [PARAM_KEY]: {
+                ...globals[PARAM_KEY],
+                ...resetValues
+              }
+            })
           }
         }
       ]}

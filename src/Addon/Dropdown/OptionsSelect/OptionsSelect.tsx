@@ -79,7 +79,6 @@ const OptionsSelect = (props: Props) => {
             ),
             active: isActive,
             onClick: () => {
-              // FIXME: single select allowEmpty - try to make empty - error happens
               if (isSingle || (isUserDefined && !selectMultiple)) {
                 if (isActive && allowEmpty) {
                   return setSelectedItems(undefined)
