@@ -1,0 +1,85 @@
+.infoContainer {
+  /* TODO: border color to global vars (but it must work in Storybook as well + add theming */
+  --border-color: #00f0ff;
+
+  /* all the border */
+  --aug-border-bg: var(--border-color);
+  --aug-border-all: 1.5px;
+  --aug-border-bottom: 0px;
+  border-bottom: 1.5px solid var(--border-color);
+
+  /* right top corner */
+  --aug-tr1-width: 10px;
+  --aug-tr1-height: 10px;
+  /* --aug-tr-extend2 is set in useEffect */
+
+  /* right shape */
+  --aug-tr2-width: 10px;
+  --aug-tr2-height: 10px;
+  --aug-br: 10px;
+  /* --aug-br-inset2 is set in useEffect */
+}
+
+.info {
+  height: 100%;
+
+  color: #fff;
+
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  border-left: 8px solid var(--border-color);
+
+  overflow: hidden;
+}
+
+/* text flow of inner shape defines here */
+.innerShapeContainer {
+  width: 20px;
+  height: 100%;
+  min-height: 175px;
+
+  float: left;
+  shape-outside: polygon(
+    0 calc(100% - 110px),
+    10px calc(100% - 80px),
+    0 calc(100% - 50px)
+  );
+  shape-margin: 1rem;
+}
+
+/* the shape itself but text flow is in .innerShapeContainer (see shape-outside/margin) */
+/* top position is set via --aug-tr in useEffect */
+.innerShape {
+  width: 10px;
+  height: calc(100% - 30px);
+  min-height: 145px;
+  background-color: var(--border-color);
+}
+
+.outerShapeContainer {
+  float: right;
+  width: 57px;
+  height: 100%;
+
+  /* --block-height is set in useEffect, as 100% doesn't work in calc */
+  shape-outside: polygon(
+    0px 0px,
+    3px 18px,
+    29px 22px,
+    29px calc(var(--block-height) - 138px),
+    42px calc(var(--block-height) - 105px),
+    42px calc(var(--block-height) - 53px),
+    35px calc(var(--block-height) - 33px),
+    29px 100%,
+    100% 100%,
+    100% 0px
+  );
+}
+
+.shortDescription {
+  margin: 0;
+  padding: 10px;
+
+  text-align: justify;
+  font-family: 'Blender Pro', sans-serif;
+}

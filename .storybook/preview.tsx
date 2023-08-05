@@ -1,8 +1,11 @@
 import React from 'react'
 import type { Preview } from '@storybook/react'
+import 'augmented-ui/augmented-ui.min.css'
 
 import { PARAM_KEY } from '../src/constants'
 import { AddonConfig } from '../src/types'
+
+import './fonts.css'
 
 const svgSharedProps = {
   stroke: 'currentColor',

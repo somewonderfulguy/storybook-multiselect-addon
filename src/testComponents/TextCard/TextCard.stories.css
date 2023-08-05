@@ -1,0 +1,16 @@
+.heightImportantSixHundredsPx {
+  height: 200px !important;
+}
+
+/* fix outer side shapes */
+.heightImportantSixHundredsPx :global(.textCardContentWrapper) {
+  height: 100%;
+}
+
+.paragraphsWrapper p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.paragraphsWrapper p:last-child {
+  margin-bottom: 0;
+}

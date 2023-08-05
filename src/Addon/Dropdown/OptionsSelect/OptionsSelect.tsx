@@ -66,7 +66,8 @@ const OptionsSelect = (props: Props) => {
         </StyledTooltipLinkListWrapper>
       )}
       <TooltipLinkList
-        links={options.map(({ value, title, left, right, icon }) => {
+        key={queryKey}
+        links={options.map(({ value, title, left, right, icon }, idx) => {
           const isActive = selectedItems.includes(value)
           return {
             id: value,
