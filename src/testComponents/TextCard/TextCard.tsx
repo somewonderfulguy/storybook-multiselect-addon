@@ -81,7 +81,7 @@ const TextCard = ({ style, className, children }: Props) => {
       <div className="info">
         <div className="innerShapeContainer">
           <div
-            className="innerShape}"
+            className="innerShape"
             data-augmented-ui="tr-clip br-clip"
             ref={innerShapeRef}
           />
