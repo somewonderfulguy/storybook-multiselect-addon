@@ -81,6 +81,7 @@ const AddonImplementation = ({ addonConfig }: { addonConfig: Addon }) => {
   const allDefaults = useInitializeState(addonConfig)
 
   const allDropdowns = Object.keys(addonConfig)
+
   return (
     <>
       {allDropdowns.map((id) => (

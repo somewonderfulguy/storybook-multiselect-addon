@@ -1,0 +1,27 @@
+.gridTheme {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+.gridElementYellow {
+  flex: 1 1 auto;
+  padding: 3rem;
+  background-color: #f5ed00;
+}
+
+.gridElementDarkRed {
+  flex: 1 1 auto;
+  padding: 3rem;
+  background: linear-gradient(
+    355deg,
+    rgba(5, 9, 14, 1) 0%,
+    rgba(71, 21, 25, 1) 100%
+  );
+}
+
+.gridElementDark {
+  flex: 1 1 auto;
+  padding: 3rem;
+  background-color: #171017;
+}

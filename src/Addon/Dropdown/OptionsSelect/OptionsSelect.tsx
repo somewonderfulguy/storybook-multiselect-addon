@@ -69,6 +69,16 @@ const OptionsSelect = (props: Props) => {
         key={queryKey}
         links={options.map(({ value, title, left, right, icon }, idx) => {
           const isActive = selectedItems.includes(value)
+
+          // filtering all values to keep the order of selected items the same as options
+          // this needed when user disables `select multiple` and only the most top item should
+          // remain selected
+          const setSortedValue = (newSelectedItems: string[]) => {
+            setSelectedItems(
+              allValues.filter((item) => newSelectedItems.includes(item))
+            )
+          }
+
           return {
             id: value,
             title: title,
@@ -81,26 +91,14 @@ const OptionsSelect = (props: Props) => {
             active: isActive,
             onClick: () => {
               if (isSingle || (isUserDefined && !selectMultiple)) {
-                if (isActive && allowEmpty) {
-                  return setSelectedItems(undefined)
-                }
+                if (isActive && allowEmpty) return setSelectedItems(undefined)
                 setSelectedItems([value])
               } else {
                 if (isActive) {
-                  if (!allowEmpty && selectedItems.length === 1) {
-                    return
-                  }
-                  setSelectedItems(
-                    selectedItems.filter((item) => item !== value)
-                  )
+                  if (!allowEmpty && selectedItems.length === 1) return
+                  setSortedValue(selectedItems.filter((item) => item !== value))
                 } else {
-                  const newSelectedItems = [...selectedItems, value]
-                  // filtering all values to keep the order of selected items the same as options
-                  // this needed when user disables `select multiple` and only the most top item should
-                  // remain selected
-                  setSelectedItems(
-                    allValues.filter((item) => newSelectedItems.includes(item))
-                  )
+                  setSortedValue([...selectedItems, value])
                 }
               }
             }

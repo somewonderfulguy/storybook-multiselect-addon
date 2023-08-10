@@ -2,10 +2,13 @@ import React from 'react'
 import type { Preview } from '@storybook/react'
 import 'augmented-ui/augmented-ui.min.css'
 
+import ThemeDecorator from '../src/storybook/ThemeDecorator'
+
 import { PARAM_KEY } from '../src/constants'
 import { AddonConfig } from '../src/types'
 
-import './fonts.css'
+import './styles/fonts.css'
+import './styles/storybook.css'
 
 const svgSharedProps = {
   stroke: 'currentColor',
@@ -162,7 +165,9 @@ const multiselect: AddonConfig = {
 }
 
 const preview: Preview = {
+  decorators: [ThemeDecorator],
   parameters: {
+    layout: 'fullscreen',
     backgrounds: {
       default: 'Cyberpunk Dark',
       values: [
