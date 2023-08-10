@@ -1,3 +1,15 @@
+# v0.0.24 (Thu Aug 10 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add theme decorator for tests, fix wrong ordering on initialization & when reducing selected items (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.23 (Sun Aug 06 2023)
 
 #### ⚠️ Pushed to `main`
