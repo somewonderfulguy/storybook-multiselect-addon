@@ -51,7 +51,7 @@ const Dropdown = ({
   const defaults = Object.entries(allDefaults).reduce<GenericValue>(
     (acc, [key, value]) => {
       if (queryKeys.includes(key)) {
-        acc[key] = Array.isArray(value) ? value.sort() : value
+        acc[key] = value
       }
       return acc
     },
@@ -63,7 +63,7 @@ const Dropdown = ({
     (acc, [key, _]) => {
       const value = _ as string | string[] | undefined
       if (queryKeys.includes(key) && value !== undefined) {
-        acc[key] = Array.isArray(value) ? value.sort() : value
+        acc[key] = value
       }
       return acc
     },

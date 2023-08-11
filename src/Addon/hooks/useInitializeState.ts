@@ -83,8 +83,8 @@ export const useInitializeState = (addonConfig: Addon) => {
             ? queryParamValue
             : undefined
           : // quite complex filtering but what it does is:
-            // 1. inside (`queryParamValue.filter`) filter query param values by available options
-            // 2. the outer (`allValues.filter`) is keep values in order of options, so it always will be in the same order
+            // 1. inside (`queryParamValue.filter`) filters query param values by available options
+            // 2. the outer (`allValues.filter`) is keeping values in order of options, so it always will be in the same order
             allValues.filter((val) =>
               (queryParamValue as string[])
                 ?.filter((val) => allValues.includes(val))
