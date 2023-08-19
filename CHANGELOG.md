@@ -1,3 +1,15 @@
+# v0.0.26 (Sat Aug 19 2023)
+
+#### ⚠️ Pushed to `main`
+
+- upgrade storybook (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.25 (Fri Aug 11 2023)
 
 #### ⚠️ Pushed to `main`
