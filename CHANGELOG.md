@@ -1,3 +1,15 @@
+# v0.0.27 (Mon Aug 21 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add optional onChange fn with exposing storybook api (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.26 (Sat Aug 19 2023)
 
 #### ⚠️ Pushed to `main`
