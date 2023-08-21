@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
-import { useGlobals } from '@storybook/manager-api'
+import { useGlobals, useStorybookApi } from '@storybook/manager-api'
 
 import { SingleSelect, MultiSelect } from '../../../types'
 import { PARAM_KEY } from '../../../constants'
@@ -16,24 +16,39 @@ import {
 type Props = SingleSelect | MultiSelect
 
 const OptionsSelect = (props: Props) => {
-  const { title, type, options, allowEmpty = false, queryKey } = props
+  const { title, type, options, allowEmpty = false, queryKey, onChange } = props
 
   const isSingle = type === 'singleSelect'
   const isUserDefined = type === 'userDefinedSelect'
   const allValues = useMemo(() => options.map(({ value }) => value), [options])
 
   const [globals, updateGlobals] = useGlobals()
+  const storybookApi = useStorybookApi()
   const value: string | string[] = globals[PARAM_KEY][queryKey]
   const selectedItems = (typeof value === 'string' ? [value] : value) ?? []
   const setSelectedItems = (newState?: string[]) => {
+    let newValue: string | string[] | undefined =
+      isSingle && newState?.length ? newState[0] : newState
+
+    if (onChange) {
+      if (isSingle) {
+        const onChange_ = onChange as SingleSelect['onChange']
+        newValue = onChange_(newValue as string, storybookApi) ?? newValue
+      } else {
+        const onChange_ = onChange as MultiSelect['onChange']
+        newValue = onChange_(newValue as string[], storybookApi) ?? newValue
+      }
+    }
+
     updateGlobals({
       [PARAM_KEY]: {
         ...globals[PARAM_KEY],
-        [queryKey]: isSingle && newState?.[0] ? newState[0] : newState
+        [queryKey]: newValue
       }
     })
   }
 
+  // TODO: persist on open/close/open
   const [selectMultiple, setSelectMultiple] = useState(true)
 
   if (!options.length) return null

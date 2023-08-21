@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { IconsProps } from '@storybook/components'
+import { API } from '@storybook/manager-api'
 
 export type AddonConfig = AddonDisabled | Addon
 
@@ -45,6 +46,12 @@ export type SingleSelect = SelectSharedProps & {
   options: Option[]
   /** Optional default value that will be selected on first render. Default value must match a `value` in `options` */
   defaultValue?: string
+  /** Optional function that will be called when value is changed, return value will be used as new value */
+  onChange?: (
+    value: string | undefined,
+    /** Storybook API for advanced use cases */
+    storybookApi: API
+  ) => string | undefined
 }
 
 /** `multiSelect` / `userDefinedSelect` will render a list of options, multiple can be selected at a time */
@@ -57,6 +64,12 @@ export type MultiSelect = SelectSharedProps & {
   options: Option[]
   /** Optional default values that will be selected on first render */
   defaultValues?: string[]
+  /** Optional function that will be called when value is changed, return value will be used as new value */
+  onChange?: (
+    value: string[],
+    /** Storybook API for advanced use cases */
+    storybookApi: API
+  ) => string[]
 }
 
 /** List item of select (multi or single) */

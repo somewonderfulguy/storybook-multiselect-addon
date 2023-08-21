@@ -129,6 +129,16 @@ const multiselect: AddonConfig = {
         type: 'multiSelect',
         allowEmpty: true,
         queryKey: 'test',
+        onChange: (values, api) => {
+          const { emit } = api
+
+          emit('customEmit', values)
+
+          if (values.includes('parzival')) {
+            return [...values, 'art3mis']
+          }
+          return values
+        },
         options: [
           {
             value: 'parzival',
