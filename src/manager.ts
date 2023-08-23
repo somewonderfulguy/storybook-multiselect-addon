@@ -1,4 +1,5 @@
 import { addons, types } from '@storybook/manager-api'
+
 import { ADDON_ID, TOOL_ID } from './constants'
 import Addon from './Addon'
 
@@ -12,8 +13,7 @@ addons.register(ADDON_ID, () => {
   // Register the tool
   addons.add(TOOL_ID, {
     type: types.TOOL,
-    // TODO: upd
-    title: 'My addon',
+    title: 'Multiselect',
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: Addon
   })

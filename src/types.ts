@@ -37,6 +37,7 @@ export type SelectSharedProps = {
   allowEmpty?: boolean
   /** Query key to be used in url, must be unique */
   queryKey: string
+  // TODO: add & implement `closeOnSelect` prop
 }
 
 /** `singleSelect` will render a list of options, only one can be selected at a time */
