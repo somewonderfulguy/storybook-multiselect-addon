@@ -1,3 +1,15 @@
+# v0.0.32 (Mon Aug 28 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add demo gif into readme (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.31 (Mon Aug 28 2023)
 
 #### ⚠️ Pushed to `main`
