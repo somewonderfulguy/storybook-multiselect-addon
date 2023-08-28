@@ -1,3 +1,15 @@
+# v0.0.29 (Sat Aug 26 2023)
+
+#### ⚠️ Pushed to `main`
+
+- start working on readme (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.28 (Wed Aug 23 2023)
 
 #### ⚠️ Pushed to `main`
