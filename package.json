@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-multiselect",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Tool to select multiple options",
   "keywords": [
     "storybook-addons",
