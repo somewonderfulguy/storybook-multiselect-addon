@@ -1,3 +1,15 @@
+# v0.0.35 (Thu Nov 16 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add class name to menu item for external use (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.34 (Thu Aug 31 2023)
 
 #### ⚠️ Pushed to `main`
