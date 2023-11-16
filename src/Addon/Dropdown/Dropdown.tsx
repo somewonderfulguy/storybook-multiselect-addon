@@ -75,7 +75,7 @@ const Dropdown = ({
   return (
     <WithTooltip
       tooltip={() => (
-        <StyledContainer>
+        <StyledContainer className="multiselect">
           {elements.map((element, idx) => {
             let returnElement: ReactNode = null
             switch (element.type) {

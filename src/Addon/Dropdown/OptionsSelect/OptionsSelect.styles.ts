@@ -1,4 +1,4 @@
-import { styled } from '@storybook/theming'
+import { styled, Theme } from '@storybook/theming'
 
 const StyledTooltipLinkListWrapper = styled.div`
   & a {
@@ -13,12 +13,16 @@ const StyledTitle = styled.h3`
 `
 StyledTitle.displayName = 'StyledTitle'
 
-const StyledIconsWrapper = styled.div`
+const StyledIconsWrapper = styled.div<{ theme?: Theme }>`
   display: flex;
   gap: 5px;
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: row;
+
+  & > svg {
+    fill: ${({ theme }) => theme!.color.secondary};
+  }
 `
 StyledIconsWrapper.displayName = 'StyledIconsWrapper'
 
