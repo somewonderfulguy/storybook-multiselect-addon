@@ -1,3 +1,15 @@
+# v0.0.36 (Thu Nov 16 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add static class to whole drop-down, change color of check icon to match theme.color.secondary (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.35 (Thu Nov 16 2023)
 
 #### ⚠️ Pushed to `main`
