@@ -82,7 +82,7 @@ const OptionsSelect = (props: Props) => {
       )}
       <TooltipLinkList
         key={queryKey}
-        links={options.map(({ value, title, left, right, icon }, idx) => {
+        links={options.map(({ value, title, left, right, icon }) => {
           const isActive = selectedItems.includes(value)
 
           // filtering all values to keep the order of selected items the same as options
@@ -103,6 +103,7 @@ const OptionsSelect = (props: Props) => {
                 {right} {isActive && <Icons icon="check" />}
               </StyledIconsWrapper>
             ),
+            className: isActive ? 'menu-item-selected' : 'menu-item',
             active: isActive,
             onClick: () => {
               if (isSingle || (isUserDefined && !selectMultiple)) {
