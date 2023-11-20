@@ -1,3 +1,15 @@
+# v0.0.37 (Mon Nov 20 2023)
+
+#### ⚠️ Pushed to `main`
+
+- add support for localStorage (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.36 (Thu Nov 16 2023)
 
 #### ⚠️ Pushed to `main`
