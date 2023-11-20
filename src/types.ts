@@ -37,6 +37,13 @@ export type SelectSharedProps = {
   allowEmpty?: boolean
   /** Query key to be used in url, must be unique */
   queryKey: string
+  /** If provided, `localStorage` will be used to save/read values.\
+   * \
+   * Priority order:
+   * 1. url query key params
+   * 1. `localStorage`
+   * 1. `defaultValue(s)` */
+  localStorageKey?: string
   // TODO: add & implement `closeOnSelect` prop
 }
 

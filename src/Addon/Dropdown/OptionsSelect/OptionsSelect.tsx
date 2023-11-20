@@ -15,9 +15,15 @@ import {
 
 type Props = SingleSelect | MultiSelect
 
-const OptionsSelect = (props: Props) => {
-  const { title, type, options, allowEmpty = false, queryKey, onChange } = props
-
+const OptionsSelect = ({
+  title,
+  type,
+  options,
+  allowEmpty = false,
+  queryKey,
+  onChange,
+  localStorageKey
+}: Props) => {
   const isSingle = type === 'singleSelect'
   const isUserDefined = type === 'userDefinedSelect'
   const allValues = useMemo(() => options.map(({ value }) => value), [options])
@@ -37,6 +43,16 @@ const OptionsSelect = (props: Props) => {
       } else {
         const onChange_ = onChange as MultiSelect['onChange']
         newValue = onChange_(newValue as string[], storybookApi) ?? newValue
+      }
+    }
+
+    if (localStorageKey) {
+      if (newValue === undefined || (!isSingle && !newValue.length)) {
+        localStorage.removeItem(localStorageKey)
+      } else if (isSingle) {
+        localStorage.setItem(localStorageKey, newValue as string)
+      } else {
+        localStorage.setItem(localStorageKey, (newValue as string[]).join(','))
       }
     }
 

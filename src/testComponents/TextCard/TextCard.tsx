@@ -4,9 +4,6 @@ import useResizeObserver from './hooks/useResizeObserver'
 
 import './TextCard.css'
 
-// TODO: fix font
-// TODO: fix not displaying left shift
-
 type Props = {
   /** Any valid react node, however if you want text to flow and match the shape of
    * block then `children` must be plain text or inline block. If no `children` provided

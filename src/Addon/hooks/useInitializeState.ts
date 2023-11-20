@@ -103,10 +103,46 @@ export const useInitializeState = (addonConfig: Addon) => {
       {}
     )
 
+    const allLocalStorageValues: GenericValue = allSelects.reduce(
+      (acc, selectObject) => {
+        const isSingle = selectObject.type === 'singleSelect'
+        const allValues = selectObject.options.map(({ value }) => value)
+
+        if (selectObject.localStorageKey) {
+          const value = localStorage.getItem(selectObject.localStorageKey)
+          if (value === null) return acc
+
+          const newValue = isSingle
+            ? allValues.includes(value)
+              ? value
+              : undefined
+            : // quite complex filtering but what it does is:
+              // 1. inside (`value.split(',').filter`) filters query param values by available options
+              // 2. the outer (`allValues.filter`) is keeping values in order of options, so it always will be in the same order
+              allValues.filter((val) =>
+                value
+                  .split(',')
+                  .filter((val) => allValues.includes(val))
+                  .includes(val)
+              )
+
+          return {
+            ...acc,
+            ...(newValue !== undefined && { [selectObject.queryKey]: newValue })
+          }
+        }
+
+        return acc
+      },
+      {}
+    )
+
     const initState: { [paramKey: string]: GenericValue } = {
       [PARAM_KEY]: {
-        // query params have priority over default values
+        // query params have priority over default values and local storage
+        // local storage has priority over default values
         ...allDefaults,
+        ...allLocalStorageValues,
         ...allQueryParams
       }
     }

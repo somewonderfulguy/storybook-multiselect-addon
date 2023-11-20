@@ -38,6 +38,7 @@ const multiselect: AddonConfig = {
         title: 'Orientation',
         defaultValue: 'horizontal',
         queryKey: 'orientation',
+        localStorageKey: 'orientation',
         options: [
           {
             value: 'horizontal',
@@ -74,6 +75,7 @@ const multiselect: AddonConfig = {
         title: 'Theme',
         defaultValues: ['yellow', 'darkRed'],
         queryKey: 'theme',
+        localStorageKey: 'theme',
         options: [
           {
             value: 'yellow',
@@ -129,6 +131,7 @@ const multiselect: AddonConfig = {
         type: 'multiSelect',
         allowEmpty: true,
         queryKey: 'test',
+        localStorageKey: 'test',
         onChange: (values, api) => {
           const { emit } = api
 
