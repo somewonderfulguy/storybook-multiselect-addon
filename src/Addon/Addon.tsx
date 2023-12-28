@@ -15,7 +15,8 @@ import Dropdown from './Dropdown'
 import { useCheckUniqueValues } from './hooks/useCheckUniqueValues'
 import { useInitializeState } from './hooks/useInitializeState'
 
-// TODO: configure css modules (is it an issue of tsup? change to vite/webpack/rollup?)
+import { StyledErrorIconContainer } from './Addon.styles'
+
 // TODO: configure aliases
 // TODO: add linter
 // TODO: add storybook for addon itself, so user can see how it works
@@ -55,14 +56,9 @@ const Addon = () => {
   return (
     <ErrorBoundary
       fallbackRender={() => (
-        <div title="Multi select addon crushed. See console for more information">
-          <Icons
-            icon="alert"
-            color="red"
-            // TODO: move styles outside
-            style={{ margin: '13px 7px 8px 11px', cursor: 'not-allowed' }}
-          />
-        </div>
+        <StyledErrorIconContainer title="Multi select addon crushed. See console for more information">
+          <Icons icon="alert" color="red" />
+        </StyledErrorIconContainer>
       )}
       onError={(error, info) => console.error(error, info)}
     >
