@@ -1,3 +1,15 @@
+# v0.0.39 (Thu Dec 28 2023)
+
+#### ⚠️ Pushed to `main`
+
+- v 1.0.0 (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.38 (Thu Dec 28 2023)
 
 #### ⚠️ Pushed to `main`
