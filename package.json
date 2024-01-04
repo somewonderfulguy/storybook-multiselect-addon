@@ -33,13 +33,13 @@
     "format": "prettier --list-different --write ."
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.4.0",
-    "@storybook/addon-interactions": "^7.4.0",
-    "@storybook/addon-links": "^7.4.0",
-    "@storybook/addon-mdx-gfm": "7.4.0",
-    "@storybook/react": "^7.4.0",
-    "@storybook/react-vite": "^7.4.0",
-    "@storybook/testing-library": "^0.2.0",
+    "@storybook/addon-essentials": "^7.6.7",
+    "@storybook/addon-interactions": "^7.6.7",
+    "@storybook/addon-links": "^7.6.7",
+    "@storybook/addon-mdx-gfm": "7.6.7",
+    "@storybook/react": "^7.6.7",
+    "@storybook/react-vite": "^7.6.7",
+    "@storybook/testing-library": "^0.2.2",
     "@types/node": "^18.15.0",
     "@types/react": "^18.0.34",
     "@vitejs/plugin-react": "^3.1.0",
@@ -56,11 +56,11 @@
     "react-dom": "^18.0.0",
     "react-error-boundary": "^4.0.10",
     "rimraf": "^3.0.2",
-    "storybook": "^7.4.0",
-    "tsup": "^6.6.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.1.4",
-    "zx": "^1.14.1"
+    "storybook": "^7.6.7",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "zx": "^7.2.3"
   },
   "peerDependencies": {
     "@storybook/blocks": "^7.0.0",
