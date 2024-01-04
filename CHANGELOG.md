@@ -1,3 +1,16 @@
+# v1.0.2 (Thu Jan 04 2024)
+
+#### ⚠️ Pushed to `main`
+
+- update node version in release.yml (somewondewrfulguy@gmail.com)
+- update storybook and other dependencies (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v0.0.39 (Thu Dec 28 2023)
 
 #### ⚠️ Pushed to `main`
