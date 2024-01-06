@@ -1,3 +1,15 @@
+# v1.0.3 (Sat Jan 06 2024)
+
+#### ⚠️ Pushed to `main`
+
+- update readme (quick start section) (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.2 (Thu Jan 04 2024)
 
 #### ⚠️ Pushed to `main`
