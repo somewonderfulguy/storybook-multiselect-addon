@@ -22,6 +22,8 @@ export type AddonEntry = {
   icon?: ReactNode | IconsProps['icon']
   /** Elements, whether single select or multiple select, or reset button */
   elements: Array<Reset | SingleSelect | MultiSelect>
+  /** Where to show dropdown - defaults to 'both' */
+  viewMode?: 'story' | 'docs' | 'both'
 }
 
 /** `reset` will reset all values to default based on `defaultValue`/`defaultValues` in select(s) */

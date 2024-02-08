@@ -15,7 +15,7 @@ Optional Reset to default button that resets all options to default values.
 https://cyberpunk-ui-library.vercel.app \
 [Source code](https://github.com/somewonderfulguy/cyberpunk/tree/master/packages/library)
 
-Here in the top bar you can see the addon in action. There are two dropdowns 'Theme Storybook' and 'Theme & Language'. Both of them are implemented with this addon.
+Here, in the top bar you can see two dropdowns: 'Theme Storybook' and 'Theme & Language'. Both of them are implemented with this addon.
 
 'Theme Storybook' is a single select dropdown that allows to change Storybook theme (outer shell) - for this `onChange` callback used as it allows to reach Storybook API.
 
@@ -185,7 +185,8 @@ const preview: Preview = {
 
 - Add boolean flag to close toolbar after selection
 - Measure performance and optimize
+- Finish readme
 
 ## Known issues
 
-_Section is in progress_
+- Performance issues. No `memo` used intentionally to avoid premature optimization. However, profiling and optimization is planned.

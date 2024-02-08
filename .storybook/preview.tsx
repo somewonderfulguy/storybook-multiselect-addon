@@ -98,6 +98,7 @@ const multiselect: AddonConfig = {
   },
   language: {
     icon: 'globe',
+    viewMode: 'docs',
     elements: [
       {
         type: 'singleSelect',

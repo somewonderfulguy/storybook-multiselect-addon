@@ -1,6 +1,7 @@
 import { useParameter } from '@storybook/manager-api'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Icons } from '@storybook/components'
+import { useStorybookState } from '@storybook/manager-api'
 
 import {
   AddonConfig,
@@ -43,10 +44,22 @@ const Addon = () => {
     return null
   }
 
-  const configWithoutDisable = Object.keys(multiToolbarConfig).reduce<Addon>(
+  const { viewMode } = useStorybookState()
+
+  const configFiltered = Object.keys(multiToolbarConfig).reduce<Addon>(
     (acc, curr) => {
+      /** handle: `parameters: { multiselect: { disable: true } }` */
       if (curr !== 'disable') {
-        acc[curr] = (multiToolbarConfig as Addon)[curr]
+        const dropdownData = multiToolbarConfig[
+          curr as keyof typeof multiToolbarConfig
+        ] as AddonEntry
+
+        const { viewMode: viewModeDropdown = 'both' } = dropdownData
+
+        /** handle: `viewMode` in config */
+        if (viewModeDropdown === 'both' || viewModeDropdown === viewMode) {
+          acc[curr] = (multiToolbarConfig as Addon)[curr]
+        }
       }
       return acc
     },
@@ -63,7 +76,7 @@ const Addon = () => {
       onError={(error, info) => console.error(error, info)}
     >
       {multiToolbarConfig?.disable ? null : (
-        <AddonImplementation addonConfig={configWithoutDisable} />
+        <AddonImplementation addonConfig={configFiltered} />
       )}
     </ErrorBoundary>
   )
