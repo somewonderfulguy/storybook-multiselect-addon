@@ -1,3 +1,15 @@
+# v1.0.4 (Thu Feb 08 2024)
+
+#### ⚠️ Pushed to `main`
+
+- implement choosing in what viewMode to show dropdown(s) - docs, story, both (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.3 (Sat Jan 06 2024)
 
 #### ⚠️ Pushed to `main`
