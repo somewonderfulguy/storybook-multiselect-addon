@@ -1,3 +1,15 @@
+# v1.0.5 (Thu Feb 08 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix typo in addon name, add todo comment (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.4 (Thu Feb 08 2024)
 
 #### ⚠️ Pushed to `main`
