@@ -26,6 +26,7 @@ import { StyledErrorIconContainer } from './Addon.styles'
 // TODO: write tests
 // TODO: fix watch mode (perhaps, tsup issue)
 // TODO: metadata for addon, see: https://storybook.js.org/docs/react/addons/integration-catalog
+// TODO: create demo
 
 // where is it used? colocate
 export const getAllMultiSelects = (addonConfig: Addon) =>

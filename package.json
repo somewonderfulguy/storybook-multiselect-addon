@@ -7,7 +7,7 @@
     "storybook-addons"
   ],
   "storybook": {
-    "displayName": "Mutliselect",
+    "displayName": "Multiselect",
     "supportedFrameworks": [
       "react"
     ],
