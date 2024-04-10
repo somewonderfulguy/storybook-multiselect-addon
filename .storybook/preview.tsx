@@ -134,7 +134,6 @@ const multiselect: AddonConfig = {
         queryKey: 'test',
         localStorageKey: 'test',
         onChange: `(values, api) => {
-          console.log('onChange works', values)
           const { emit } = api
 
           emit('customEmit', values)
