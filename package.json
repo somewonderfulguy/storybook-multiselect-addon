@@ -83,20 +83,17 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/preview.js",
+      "require": "./dist/preview.cjs"
     },
+    "./preset": "./dist/preset.cjs",
+    "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -115,5 +112,19 @@
   },
   "resolutions": {
     "jackspeak": "2.1.1"
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.ts"
+    ],
+    "previewEntries": [
+      "src/preview.ts"
+    ],
+    "nodeEntries": [
+      "src/preset.ts"
+    ]
   }
 }
