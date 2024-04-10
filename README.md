@@ -129,6 +129,7 @@ const multiselect: Addon = {
     elements: [...],
     onChange: (values, api) => {
       api.emit('customEmit', values)
+
       if (values.includes('parzival')) {
         return [...values, 'art3mis']
       }
