@@ -17,6 +17,9 @@ const config: StorybookConfig = {
       }
     }
   },
+  features: {
+    storyStoreV7: false
+  },
   docs: {
     autodocs: 'tag'
   }
