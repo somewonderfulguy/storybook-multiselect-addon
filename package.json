@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "prebuild": "yarn clean",
-    "build": "NODE_OPTIONS=--max_old_space_size=4096 tsup",
+    "build": "export NODE_OPTIONS=--max_old_space_size=9126 && tsup",
     "build:watch": "yarn build --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch storybook",
