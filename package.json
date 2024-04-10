@@ -26,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
-    "release": "export NODE_OPTIONS=--max_old_space_size=16384 && yarn build && auto shipit",
+    "release": "yarn build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.mjs",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
@@ -57,7 +57,7 @@
     "react-error-boundary": "^4.0.10",
     "rimraf": "^3.0.2",
     "storybook": "^7.6.7",
-    "tsup": "^8.0.2",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "zx": "^7.2.3"
@@ -83,17 +83,20 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./manager": {
+      "require": "./dist/manager.js",
+      "import": "./dist/manager.mjs",
+      "types": "./dist/manager.d.ts"
     },
     "./preview": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/preview.js",
-      "require": "./dist/preview.cjs"
+      "require": "./dist/preview.js",
+      "import": "./dist/preview.mjs",
+      "types": "./dist/preview.d.ts"
     },
-    "./preset": "./dist/preset.cjs",
-    "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -112,19 +115,5 @@
   },
   "resolutions": {
     "jackspeak": "2.1.1"
-  },
-  "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
-    "managerEntries": [
-      "src/manager.ts"
-    ],
-    "previewEntries": [
-      "src/preview.ts"
-    ],
-    "nodeEntries": [
-      "src/preset.ts"
-    ]
   }
 }

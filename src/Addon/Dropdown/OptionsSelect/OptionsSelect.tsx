@@ -2,12 +2,7 @@ import { useState, useMemo } from 'react'
 import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
 import { useGlobals, useStorybookApi } from '@storybook/manager-api'
 
-import {
-  SingleSelect,
-  MultiSelect,
-  SingleSelectOnChange,
-  MultiSelectOnChange
-} from '../../../types'
+import { SingleSelect, MultiSelect } from '../../../types'
 import { PARAM_KEY } from '../../../constants'
 
 import Switch from './Switch'
@@ -42,16 +37,11 @@ const OptionsSelect = ({
       isSingle && newState?.length ? newState[0] : newState
 
     if (onChange) {
-      const onChangeFn =
-        typeof onChange === 'string'
-          ? new Function('return ' + onChange)()
-          : onChange
-
       if (isSingle) {
-        const onChange_ = onChangeFn as SingleSelectOnChange
+        const onChange_ = onChange as SingleSelect['onChange']
         newValue = onChange_(newValue as string, storybookApi) ?? newValue
       } else {
-        const onChange_ = onChangeFn as MultiSelectOnChange
+        const onChange_ = onChange as MultiSelect['onChange']
         newValue = onChange_(newValue as string[], storybookApi) ?? newValue
       }
     }

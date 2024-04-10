@@ -133,7 +133,7 @@ const multiselect: AddonConfig = {
         allowEmpty: true,
         queryKey: 'test',
         localStorageKey: 'test',
-        onChange: `(values, api) => {
+        onChange: (values, api) => {
           const { emit } = api
 
           emit('customEmit', values)
@@ -142,7 +142,7 @@ const multiselect: AddonConfig = {
             return [...values, 'art3mis']
           }
           return values
-        }`,
+        },
         options: [
           {
             value: 'parzival',
