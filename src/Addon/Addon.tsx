@@ -5,7 +5,7 @@ import { useStorybookState } from '@storybook/manager-api'
 
 import {
   AddonConfig,
-  Addon,
+  Addon as AddonType,
   AddonEntry,
   SingleSelect,
   MultiSelect
@@ -29,7 +29,7 @@ import { StyledErrorIconContainer } from './Addon.styles'
 // TODO: create demo
 
 // where is it used? colocate
-export const getAllMultiSelects = (addonConfig: Addon) =>
+export const getAllMultiSelects = (addonConfig: AddonType) =>
   Object.values(addonConfig)
     .map(
       ({ elements }) =>
@@ -47,7 +47,7 @@ const Addon = () => {
 
   const { viewMode } = useStorybookState()
 
-  const configFiltered = Object.keys(multiToolbarConfig).reduce<Addon>(
+  const configFiltered = Object.keys(multiToolbarConfig).reduce<AddonType>(
     (acc, curr) => {
       /** handle: `parameters: { multiselect: { disable: true } }` */
       if (curr !== 'disable') {
@@ -59,7 +59,7 @@ const Addon = () => {
 
         /** handle: `viewMode` in config */
         if (viewModeDropdown === 'both' || viewModeDropdown === viewMode) {
-          acc[curr] = (multiToolbarConfig as Addon)[curr]
+          acc[curr] = (multiToolbarConfig as AddonType)[curr]
         }
       }
       return acc
@@ -83,7 +83,7 @@ const Addon = () => {
   )
 }
 
-const AddonImplementation = ({ addonConfig }: { addonConfig: Addon }) => {
+const AddonImplementation = ({ addonConfig }: { addonConfig: AddonType }) => {
   // check that all options.value, defaultValues, queryKey are unique
   useCheckUniqueValues(addonConfig)
 
