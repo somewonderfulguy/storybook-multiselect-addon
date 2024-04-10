@@ -10,15 +10,7 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/react-vite',
-    options: {
-      builder: {
-        // @ts-expect-error
-        useSWC: true
-      }
-    }
-  },
-  features: {
-    storyStoreV7: false
+    options: {}
   },
   docs: {
     autodocs: 'tag'
