@@ -3,100 +3,28 @@
   "version": "1.0.5",
   "description": "Tool to select multiple options",
   "keywords": [
-    "storybook-addons",
     "storybook-addons"
   ],
-  "storybook": {
-    "displayName": "Multiselect",
-    "supportedFrameworks": [
-      "react"
-    ],
-    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somewonderfulguy/storybook-multiselect-addon"
   },
-  "author": "Dmitriy Yastrebov <somewonderfulguy@gmail.com>",
+  "type": "module",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "prebuild": "yarn clean",
-    "build": "tsup",
-    "build:watch": "yarn build --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch storybook",
-    "prerelease": "zx scripts/prepublish-checks.mjs",
-    "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs",
-    "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build",
-    "format": "prettier --list-different --write ."
-  },
-  "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.7",
-    "@storybook/addon-interactions": "^7.6.7",
-    "@storybook/addon-links": "^7.6.7",
-    "@storybook/addon-mdx-gfm": "7.6.7",
-    "@storybook/react": "^7.6.7",
-    "@storybook/react-vite": "^7.6.7",
-    "@storybook/testing-library": "^0.2.2",
-    "@types/node": "^18.15.0",
-    "@types/react": "^18.0.34",
-    "@vitejs/plugin-react": "^3.1.0",
-    "augmented-ui": "^2.0.0",
-    "auto": "^10.3.0",
-    "boxen": "^5.0.1",
-    "dedent": "^0.7.0",
-    "lodash": "^4.17.21",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.1",
-    "prompts": "^2.4.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-error-boundary": "^4.0.10",
-    "rimraf": "^3.0.2",
-    "storybook": "^7.6.7",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10",
-    "zx": "^7.2.3"
-  },
-  "peerDependencies": {
-    "@storybook/blocks": "^7.0.0",
-    "@storybook/components": "^7.0.0",
-    "@storybook/core-events": "^7.0.0",
-    "@storybook/manager-api": "^7.0.0",
-    "@storybook/preview-api": "^7.0.0",
-    "@storybook/theming": "^7.0.0",
-    "@storybook/types": "^7.0.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
-  },
+  "author": "Dmitriy Yastrebov <somewonderfulguy@gmail.com>",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/preview.js",
+      "require": "./dist/preview.cjs"
     },
+    "./preset": "./dist/preset.cjs",
+    "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -105,15 +33,74 @@
     "*.js",
     "*.d.ts"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/somewonderfulguy/storybook-multiselect-addon"
+  "scripts": {
+    "postinstall": "node scripts/welcome.js",
+    "build": "tsup",
+    "build:watch": "npm run build -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p build:watch 'storybook --quiet'",
+    "prerelease": "zx scripts/prepublish-checks.js",
+    "release": "npm run build && auto shipit",
+    "eject-ts": "zx scripts/eject-typescript.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "8.0.0",
+    "@storybook/addon-interactions": "8.0.0",
+    "@storybook/addon-links": "8.0.0",
+    "@storybook/blocks": "8.0.0",
+    "@storybook/components": "8.0.0",
+    "@storybook/core-events": "8.0.0",
+    "@storybook/manager": "8.0.0",
+    "@storybook/manager-api": "8.0.0",
+    "@storybook/preview": "8.0.0",
+    "@storybook/preview-api": "8.0.0",
+    "@storybook/react": "8.0.0",
+    "@storybook/react-vite": "8.0.0",
+    "@storybook/test": "8.0.0",
+    "@storybook/theming": "8.0.0",
+    "@storybook/types": "8.0.0",
+    "@types/node": "^18.15.0",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.2.1",
+    "auto": "^11.1.1",
+    "boxen": "^7.1.1",
+    "dedent": "^1.5.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.5",
+    "prompts": "^2.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "8.0.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "zx": "^7.2.3"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "access": "public"
   },
-  "resolutions": {
-    "jackspeak": "2.1.1"
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.ts"
+    ],
+    "previewEntries": [
+      "src/preview.ts"
+    ],
+    "nodeEntries": [
+      "src/preset.ts"
+    ]
+  },
+  "storybook": {
+    "displayName": "Multiselect",
+    "supportedFrameworks": [
+      "react"
+    ],
+    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
 }
