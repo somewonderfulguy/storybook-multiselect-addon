@@ -1,3 +1,16 @@
+# v1.0.7 (Thu Apr 11 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/somewonderfulguy/storybook-multiselect-addon (somewondewrfulguy@gmail.com)
+- restore content of preview.tsx (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.6 (Thu Apr 11 2024)
 
 #### 🐛 Bug Fix
