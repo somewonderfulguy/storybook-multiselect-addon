@@ -1,3 +1,16 @@
+# v1.0.10 (Thu Apr 11 2024)
+
+#### ⚠️ Pushed to `main`
+
+- reinstall node_modules, recreate package-lock.json (somewondewrfulguy@gmail.com)
+- version 2, support storybook 8, remove 'left' property from options (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.9 (Thu Apr 11 2024)
 
 #### ⚠️ Pushed to `main`
