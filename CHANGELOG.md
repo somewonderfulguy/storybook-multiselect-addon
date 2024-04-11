@@ -1,3 +1,15 @@
+# v1.0.9 (Thu Apr 11 2024)
+
+#### ⚠️ Pushed to `main`
+
+- restore reset button, storybook from v8.0.0 to v8.0.7 (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.8 (Thu Apr 11 2024)
 
 #### ⚠️ Pushed to `main`
