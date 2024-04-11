@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParameter } from '@storybook/manager-api'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Icons } from '@storybook/components'
@@ -95,7 +96,7 @@ const AddonImplementation = ({ addonConfig }: { addonConfig: AddonType }) => {
   return (
     <>
       {allDropdowns.map((id) => (
-        <></>
+        <>00</>
         // <Dropdown
         //   key={id}
         //   {...(addonConfig[id] as AddonEntry)}
