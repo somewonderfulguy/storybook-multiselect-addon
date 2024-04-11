@@ -1,3 +1,15 @@
+# v1.0.8 (Thu Apr 11 2024)
+
+#### ⚠️ Pushed to `main`
+
+- restoring plugin functionality (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov (somewondewrfulguy@gmail.com)
+
+---
+
 # v1.0.7 (Thu Apr 11 2024)
 
 #### ⚠️ Pushed to `main`
