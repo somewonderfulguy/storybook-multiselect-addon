@@ -1,3 +1,23 @@
+# v1.0.6 (Thu Apr 11 2024)
+
+#### 🐛 Bug Fix
+
+- Rollback storybook [#2](https://github.com/somewonderfulguy/storybook-multiselect-addon/pull/2) (somewondewrfulguy@gmail.com)
+
+#### ⚠️ Pushed to `main`
+
+- try to fix error in pipeline (copying new configuration from Addon Kit) (somewondewrfulguy@gmail.com)
+- try to fix error in pipeline (remove dropdrown component) (somewondewrfulguy@gmail.com)
+- try to fix error in pipeline (somewondewrfulguy@gmail.com)
+- upgrade tsup (somewondewrfulguy@gmail.com)
+- implement workaround fix for non-working Storybook's v8 functions in preview object, for onChange function workaround is optinally passing string and internally the string is parsed to a function (somewondewrfulguy@gmail.com)
+
+#### Authors: 1
+
+- Dmitriy Yastrebov ([@somewonderfulguy](https://github.com/somewonderfulguy))
+
+---
+
 # v1.0.5 (Thu Feb 08 2024)
 
 #### ⚠️ Pushed to `main`
