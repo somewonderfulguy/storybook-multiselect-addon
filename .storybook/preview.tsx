@@ -42,7 +42,7 @@ const multiselect: AddonConfig = {
           {
             value: 'horizontal',
             title: 'Horizontal',
-            left: (
+            icon: (
               <svg
                 fill="currentColor"
                 strokeWidth="0"
@@ -56,7 +56,7 @@ const multiselect: AddonConfig = {
           {
             value: 'vertical',
             title: 'Vertical',
-            left: (
+            icon: (
               <svg
                 fill="currentColor"
                 strokeWidth="0"
@@ -79,17 +79,17 @@ const multiselect: AddonConfig = {
           {
             value: 'yellow',
             title: 'Yellow',
-            left: '🟡'
+            icon: '🟡'
           },
           {
             value: 'darkRed',
             title: 'Dark Red',
-            left: '🔴'
+            icon: '🔴'
           },
           {
             value: 'dark',
             title: 'Dark',
-            left: '⚫️'
+            icon: '⚫️'
           }
         ]
       }
@@ -107,22 +107,22 @@ const multiselect: AddonConfig = {
           {
             value: 'en',
             title: 'English',
-            left: '🇬🇧'
+            icon: '🇬🇧'
           },
           {
             value: 'ukr',
             title: 'Ukrainian',
-            left: '🇺🇦'
+            icon: '🇺🇦'
           },
           {
             value: 'pl',
             title: 'Polish',
-            left: '🇵🇱'
+            icon: '🇵🇱'
           },
           {
             value: 'jp',
             title: 'Japanese',
-            left: '🇯🇵'
+            icon: '🇯🇵'
           }
         ]
       },
@@ -146,7 +146,6 @@ const multiselect: AddonConfig = {
           {
             value: 'parzival',
             title: 'Parzival',
-            icon: 'key',
             right: '🗝️'
           },
           {
@@ -156,13 +155,12 @@ const multiselect: AddonConfig = {
           {
             value: 'aech',
             title: 'Aech',
-            icon: 'wrench',
-            left: '🤖'
+            icon: '🤖'
           },
           {
             value: 'shoto',
             title: 'Shoto',
-            left: '🐉',
+            icon: '🐉',
             right: '🐲'
           },
           {

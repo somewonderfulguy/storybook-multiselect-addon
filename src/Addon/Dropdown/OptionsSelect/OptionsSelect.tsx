@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react'
-import { Icons, IconsProps, TooltipLinkList } from '@storybook/components'
+import { TooltipLinkList } from '@storybook/components'
+import { CheckIcon } from '@storybook/icons'
 import { useGlobals, useStorybookApi } from '@storybook/manager-api'
 
 import {
@@ -15,7 +16,8 @@ import Switch from './Switch'
 import {
   StyledTooltipLinkListWrapper,
   StyledTitle,
-  StyledIconsWrapper
+  StyledIconsWrapper,
+  StyledTitleWithIcon
 } from './OptionsSelect.styles'
 
 type Props = SingleSelect | MultiSelect
@@ -108,7 +110,7 @@ const OptionsSelect = ({
       )}
       <TooltipLinkList
         key={queryKey}
-        links={options.map(({ value, title, left, right, icon }) => {
+        links={options.map(({ value, title, right, icon }) => {
           const isActive = selectedItems.includes(value)
 
           // filtering all values to keep the order of selected items the same as options
@@ -122,11 +124,10 @@ const OptionsSelect = ({
 
           return {
             id: value,
-            title: title,
-            left: icon ? <Icons icon={icon as IconsProps['icon']} /> : left,
+            title: icon ? <StyledTitleWithIcon><div>{icon}</div><div>{title}</div></StyledTitleWithIcon> : title,
             right: (
               <StyledIconsWrapper>
-                {right} {isActive && <Icons icon="check" />}
+                {right} {isActive && <CheckIcon />}
               </StyledIconsWrapper>
             ),
             className: isActive ? 'menu-item-selected' : 'menu-item',

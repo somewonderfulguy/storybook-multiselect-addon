@@ -26,4 +26,16 @@ const StyledIconsWrapper = styled.div<{ theme?: Theme }>`
 `
 StyledIconsWrapper.displayName = 'StyledIconsWrapper'
 
-export { StyledTooltipLinkListWrapper, StyledTitle, StyledIconsWrapper }
+const StyledTitleWithIcon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+`
+StyledTitleWithIcon.displayName = 'StyledTitleWithIcon'
+
+export { StyledTooltipLinkListWrapper, StyledTitle, StyledIconsWrapper, StyledTitleWithIcon }

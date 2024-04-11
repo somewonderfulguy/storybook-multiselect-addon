@@ -1,9 +1,12 @@
 import React from 'react'
-import { Icons, TooltipLinkList } from '@storybook/components'
+import { TooltipLinkList } from '@storybook/components'
+import { UndoIcon } from '@storybook/icons'
 import { useGlobals } from '@storybook/manager-api'
 
 import { GenericValue } from '../../../types'
 import { PARAM_KEY } from '../../../constants'
+
+import { StyledResetWrapper } from './Reset.styles'
 
 type Props = { defaults: GenericValue; allKeys: string[] }
 
@@ -20,9 +23,7 @@ const Reset = ({ defaults, allKeys }: Props) => {
       links={[
         {
           id: 'reset',
-          title: 'Reset to default',
-          // @ts-expect-error
-          left: <Icons icon="undo" />,
+          title: <StyledResetWrapper><UndoIcon /> Reset to default</StyledResetWrapper>,
           onClick: () => {
             updateGlobals({
               [PARAM_KEY]: {

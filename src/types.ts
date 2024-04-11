@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { IconsProps } from '@storybook/components'
 import { API } from '@storybook/manager-api'
 
 export type AddonConfig = AddonDisabled | Addon
@@ -19,7 +18,7 @@ export type AddonEntry = {
   /** Will be displayed as tooltip when hovering over addon button */
   description?: string
   /** Icon of the dropdown, ReactNode for custom, if no icon provided - will fallback to question mark icon */
-  icon?: ReactNode | IconsProps['icon']
+  icon?: ReactNode
   /** Elements, whether single select or multiple select, or reset button */
   elements: Array<Reset | SingleSelect | MultiSelect>
   /** Where to show dropdown - defaults to 'both' */
@@ -90,12 +89,10 @@ export type Option = {
   value: string
   /** Text of option that will be in UI */
   title: ReactNode
-  /** Property for adding custom icon on the left, might be __overwritten__ if `icon` is not `undefined` */
-  left?: ReactNode
   /** Property for adding custom icon on the right */
   right?: ReactNode
-  /** Icon of option that will be in UI (on the left side), __will override__ `left` property */
-  icon?: IconsProps['icon']
+  /** Icon of option that will be in UI (on the left side) */
+  icon?: ReactNode
 }
 
 /** Value inside object of multi or single select, either string or array of string, or `undefined` */

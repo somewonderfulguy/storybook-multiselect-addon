@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-multiselect",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "Tool to select multiple options",
   "keywords": [
     "storybook-addons"
@@ -53,6 +53,7 @@
     "@storybook/blocks": "^8.0.7",
     "@storybook/components": "^8.0.7",
     "@storybook/core-events": "^8.0.7",
+    "@storybook/icons": "^1.2.9",
     "@storybook/manager": "^8.0.7",
     "@storybook/manager-api": "^8.0.7",
     "@storybook/preview": "^8.0.7",

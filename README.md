@@ -1,5 +1,3 @@
-# Last stable version is 1.0.5
-
 # Storybook Addon Multiselect
 
 Toolbar addon for Storybook that allows to create dropdown(s) to select single or multiple options. Also, there's user defined type of options - that allows user to toggle between select single/multiple option(s).
