@@ -1,4 +1,5 @@
-import React, { Icons, TooltipLinkList } from '@storybook/components'
+import React from 'react'
+import { Icons, TooltipLinkList } from '@storybook/components'
 import { useGlobals } from '@storybook/manager-api'
 
 import { GenericValue } from '../../../types'
