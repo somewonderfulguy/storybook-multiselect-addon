@@ -1,6 +1,5 @@
 import React from 'react'
 import type { Preview } from '@storybook/react'
-import 'augmented-ui/augmented-ui.min.css'
 
 import ThemeDecorator from '../src/storybook/ThemeDecorator'
 
@@ -200,8 +199,8 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/
       }
-    }
-    // [PARAM_KEY]: multiselect
+    },
+    [PARAM_KEY]: multiselect
   }
 }
 

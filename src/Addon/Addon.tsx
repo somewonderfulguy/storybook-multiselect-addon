@@ -13,7 +13,7 @@ import {
 } from '../types'
 import { PARAM_KEY } from '../constants'
 
-// import Dropdown from './Dropdown'
+import Dropdown from './Dropdown'
 import { useCheckUniqueValues } from './hooks/useCheckUniqueValues'
 import { useInitializeState } from './hooks/useInitializeState'
 
@@ -96,12 +96,11 @@ const AddonImplementation = ({ addonConfig }: { addonConfig: AddonType }) => {
   return (
     <>
       {allDropdowns.map((id) => (
-        <>00</>
-        // <Dropdown
-        //   key={id}
-        //   {...(addonConfig[id] as AddonEntry)}
-        //   allDefaults={allDefaults}
-        // />
+        <Dropdown
+          key={id}
+          {...(addonConfig[id] as AddonEntry)}
+          allDefaults={allDefaults}
+        />
       ))}
     </>
   )
